@@ -1,9 +1,22 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 
 STATUS = ((0, "Draft"), (1, "Published"))
+User = get_user_model()
+
+
+class Profile(models.Model):
+    """
+    Model for user profile
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = CloudinaryField('image')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
 
 class Category(models.Model):
@@ -20,12 +33,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.cat_title
-
+    
 
 class Post(models.Model):
     """
-    Post Model
-    Posts displayed in reverse creation date order
+    Model for recipe
     """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -39,8 +51,6 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                 related_name="categories")
 
     class Meta:
         """ Ordering class """
@@ -58,13 +68,12 @@ class Post(models.Model):
 class Comment(models.Model):
     """
     Comment Model
-    Comments displayed in creation date order
     """
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
                              related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    body = models.TextField(max_length=250)
+    body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 

@@ -6,6 +6,8 @@ from django_summernote.admin import SummernoteModelAdmin
 """
 Create the post/recipe for admin pannel
 """
+
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
@@ -13,12 +15,14 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
-    summernote_fields = ('content')
+    summernote_fields = ('content',)
 
 
 """
  Create the comment section for admin pannel
 """
+
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
 
