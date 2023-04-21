@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from .models import Post, Comment, Category, Profile
-from .forms import CommentForm, PostForm, PostSearchForm
+from .forms import CommentForm, PostForm, PostSearchForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponseRedirect

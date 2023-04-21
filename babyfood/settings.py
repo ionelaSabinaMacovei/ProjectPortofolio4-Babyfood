@@ -30,6 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost']
 
 
@@ -143,3 +145,5 @@ DEFAULT_FILES_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_PROFILE_MODULE = 'profile'
