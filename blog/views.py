@@ -9,6 +9,13 @@ from django.contrib import messages
 from django.utils.text import slugify
 
 
+def about(request):
+    """
+    Renders the about page
+    """
+    return render(request, 'about.html')
+
+
 class PostList(generic.ListView):
     """
     For displaying current post
