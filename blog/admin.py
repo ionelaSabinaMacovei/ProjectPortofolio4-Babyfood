@@ -30,3 +30,21 @@ class CommentAdmin(admin.ModelAdmin):
     """
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+
+
+@admin.register(Category)
+class CategoriesAdmin(admin.ModelAdmin):
+    """
+    Add field for category in admin panel
+    """
+    list_display = ('cat_title',)
+    search_fields = ['cat_title']
+    prepopulated_fields = {'slug': ('cat_title',)}
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    """
+    Add field for the profile in the admin panel
+    """
+    list_display = ('user',)
