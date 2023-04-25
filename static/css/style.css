@@ -9,6 +9,49 @@ body {
     color: #4A4A4F;
 }
 
+.navbar {
+    width: 100%;
+    height: 80px;
+    background-color: #e4ec69;
+    z-index: 1500;
+    position: fixed;
+}
+
+.navbar-brand {
+    margin-right: -275px !important;
+    margin-left: -75px;
+}
+
+.navbar-brand img {
+    width: 50%;
+}
+
+.navbar-brand img.nav-active {
+    width: 48%;
+}
+
+.navbar .btn {
+    background-color: transparent;
+}
+#links {
+    margin-right: auto;
+}
+.ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    margin-right: auto;
+}
+
+.justify-content-end {
+    
+    margin-right: auto;
+}
+
+#homeicon {
+    height: 15rem;
+    width: 15rem;
+    margin-top: -2.5rem;
+}
 .red-o {
     color: #E84610;
 }
