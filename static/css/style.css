@@ -1,9 +1,10 @@
 body {
     background-color: #F9FAFC;
+    font-family: 'Comic Neue', cursive;
 }
 
 .brand {
-    font-family: Lato, sans-serif;
+    font-family: 'Comic Neue', cursive;
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
