@@ -44,55 +44,63 @@
                 aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav justify-content-end" id="links">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/" aria-label="Go to the home page">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+                    <li>
+                        <a class="nav-link active" aria-current="page" href="/about" aria-label="Go to the about page">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/contact" aria-label="Go to the contact page">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Categories
                         </a>
-                        <div class="dropdown-menu m-2">
-                            {% for category in category_list %}
-                            <a class="dropdown-item"
-                                href="/cat/{{ category.cat_title }}">{{ cat.cat_title|title }}</a>
-                            {% endfor %}
-                        </div>
-                    </li>
-
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'new_post' %}">Add post</a>
-                    </li>
-                    <ul>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/categories" aria-label="Go to the categories page">Categories</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            {% for category in categories_list %}
+                            <li><a class="dropdown-item" href="{% url 'categories_posts' category.title %}" aria-label="Go to the each category page">{{ category.title }}</a></li>
+                            {% endfor%}
+                        </ul>
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link">User: {{ user.username }}</a>
+                            <a class="nav-link active" href="{% url 'add_post' %}">Add Post</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                        </li>
+                        {% endif %}
+                </ul>
+                {% if user.is_authenticated %}
+                <ul class="d-flex login-box">
+                    <!-- User authentication -->
+                    <li class="nav-item display-inline">
+                        <li><a href="/profile"><p class="nav-link">| <i class="fa fa-user" aria-hidden="true"></i>{{ user.username | slice:":10" }}</p></a></li>
+                        {% if user.profile.image %}
+                        <li><img class="author-img" src="{{ user.profile.image.url }}" alt="User Image"></li>
                         {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <li><img class="author-img" src="{% static 'images/small-img/user_profile_placeholder.jpg' %}" alt="User Image"></li>
+                        {% endif %}
+                        <li>
+                            <a class="nav-link test-center" href="{% url 'account_logout' %}" aria-label="Go to the logout page"> Logout <i class="fa fa-sign-out" aria-hidden="true"></i>|</a>
                         </li>
                     </ul>
-                    {% endif %}
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
+                    {% else %}
+                    <ul class="d-flex logout-box">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_signup' %}" aria-label="Go to the signup page">| Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_login' %}" aria-label="Go to the login page">Login |</a>
+                        </li>
+                    </ul>
+                        {% endif %}
+                
+                <p id="search-box-button" class="btn"><i class="fas fa-search"></i></p>
             </div>
         </div>
     </nav>

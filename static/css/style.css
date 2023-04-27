@@ -160,16 +160,7 @@ body {
     color: lightgray;
 }
 
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
 
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
-}
 
 .link {
     color: #23BBBB;
@@ -193,4 +184,33 @@ body {
     color: #E84610;
     background: transparent;
     border: none;
+}
+
+/*******************************
+*                              *
+*         LOGS PAGES           *
+*                              *
+*******************************/
+
+.logs-pages {
+    margin-bottom: 250px;
+    margin-top: 50px;
+    -webkit-transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    transform: translateY(20%);
+}
+
+.logs-pages .btn-signup {
+    margin-bottom: 20px;
+}
+
+.log-out {
+    height: 60vh;
+    margin-bottom: 80px;
+}
+
+.logs-pages input {
+    text-align: center;
+    border-radius: 15px !important;
+    padding: 5px 15px !important;
 }

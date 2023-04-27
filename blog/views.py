@@ -166,7 +166,7 @@ def add_post(request):
     else:
         form = PostForm()
 
-    template = 'new_post.html',
+    template = 'add_post.html',
     context = {
         'form': form,
     }
