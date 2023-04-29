@@ -103,51 +103,6 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class CategoryList(generic.ListView):
-    """
-    For displaying categories
-    """
-    template_name = 'cat.html'
-    context_object_name = 'catlist'
-
-    def get_queryset(self):
-        content = {
-            'cat': self.kwargs['category'],
-            'posts': Post.objects.filter(category__cat_title=self.kwargs['category']).filter(status=1)
-        }
-        return content
-
-
-def category_list(request):
-    """ Return a list of categories for the dropdown in the menu """
-    category_list = Category.objects.all()
-    context = {
-        "category_list": category_list,
-    }
-    return context
-
-
-def post_search(request):
-    """ Return a list of posts from a search term in the menu """
-    form = PostSearchForm()
-    q = ''
-    results = []
-
-    if 'q' in request.GET:
-        form = PostSearchForm(request.GET)
-        if form.is_valid():
-            q = form.cleaned_data['q']
-            results = Post.objects.filter(Q
-                                          (title__icontains=q)
-                                          | Q(content__icontains=q)).filter(status=1)
-
-    return render(request, 'search.html', {
-        'form': form,
-        'q': q,
-        'results': results
-    })
-
-
 @login_required
 def add_post(request):
     """ Add a post to the blog """
@@ -219,6 +174,50 @@ def delete_post(request, slug):
     else:
         messages.error(request, 'Sorry. \
             You are not authorised to perform that operaiton.')
+
+class CategoryList(generic.ListView):
+    """
+    For displaying categories
+    """
+    template_name = 'cat.html'
+    context_object_name = 'catlist'
+
+    def get_queryset(self):
+        content = {
+            'cat': self.kwargs['category'],
+            'posts': Post.objects.filter(category__cat_title=self.kwargs['category']).filter(status=1)
+        }
+        return content
+
+
+def category_list(request):
+    """ Return a list of categories for the dropdown in the menu """
+    category_list = Category.objects.all()
+    context = {
+        "category_list": category_list,
+    }
+    return context
+
+
+def post_search(request):
+    """ Return a list of posts from a search term in the menu """
+    form = PostSearchForm()
+    q = ''
+    results = []
+
+    if 'q' in request.GET:
+        form = PostSearchForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data['q']
+            results = Post.objects.filter(Q
+                                          (title__icontains=q)
+                                          | Q(content__icontains=q)).filter(status=1)
+
+    return render(request, 'search.html', {
+        'form': form,
+        'q': q,
+        'results': results
+    })
 
 
 @login_required
