@@ -214,3 +214,141 @@ body {
     border-radius: 15px !important;
     padding: 5px 15px !important;
 }
+
+
+.wrap, .wrapper {
+    margin: 0 auto 0;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1160px;
+}
+
+
+.items {
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 -1.5%;
+}
+
+.home-section.icons .items .item {
+    margin: 0;
+    padding: 0 1%;
+    width: -moz-calc(100% / 7);
+    width: -webkit-calc(100% / 7);
+    width: calc(100% / 7);
+}
+
+.items-7-col .item {
+    flex-grow: 1;
+}
+
+.items .item {
+    margin: 0 1.5% 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.home-section.icons {
+    padding: 0 0 50px;
+    margin: 0 0 40px;
+    margin-left: calc(-100vw / 2 + 100% / 2);
+    margin-right: calc(-100vw / 2 + 100% / 2);
+    max-width: 100vw;
+}
+
+
+.home-section {
+    clear: both;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.home-section .wrap {
+    position: relative;
+}
+
+.items a {
+    text-decoration: none;
+    border: none;
+    box-shadow: none;
+}
+.home-section.icons .items .item img {
+    width: 90%;
+    max-width: 120px;
+    height: auto;
+    margin: 0 auto;
+    box-shadow: none;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.items .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.15);
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+}
+
+.items a.block img, .items a img {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.screen-reader-text {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal!important;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+body.home .tagline {
+    margin-bottom: 40px;
+    
+}
+
+.tagline {
+    
+    line-height: 1.1;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: .95em;
+    text-align: center;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    margin: 0 0 40px;
+    padding: 10px;
+    margin-top: 75px;
+}
+
+
+.btn-primary {
+    color: #e8e8e8;;
+    background-color: #e8e8e8;;
+    border-color: #0d6efd;
+}

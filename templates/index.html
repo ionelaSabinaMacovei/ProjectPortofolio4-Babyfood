@@ -1,59 +1,35 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for post in post_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ post.author }}</p>
-                                </div>
-                            </div>
-                            <a href="{% url 'post_detail' post.slug  %}" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
-                                <p class="card-text">{{ post.excerpt }}</p>
-                            </a>
-                            <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}} <i class="far fa-heart"></i>
-                                {{ post.number_of_likes }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
+    <!-- HERO SECTION -->
+    <h1 class="tagline">
+        Recipes for Babies and Toddlers	</h1>
+    <div class="home-sections upper-home-sections">
+        <div class="wrap">
+        <div id="acf_widget_47225-1" class="widget-odd widget-first widget-1 icons home-section acf_widget_47225 Acf_Widget_47225 "><div class="wrap">
+        <h2 class="screen-reader-text">Browse Categories</h2>
+        <div class="items items-7-col">
+        <div class="item icon">
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><img width="240" height="300" src="{% static 'images/radish.png' %}" class="attachment-square size-square entered lazyloaded" alt="Cartoon radish illustration" decoding="async"><noscript></noscript><h3 class="title">Stage One</h3></a> </div>
+        <div class="item icon">
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2"><img width="240" height="300" src="{% static 'images/strawberry.png' %}" class="attachment-square size-square entered lazyloaded" alt="Cartoon strawberry illustration" decoding="async"><noscript></noscript><h3 class="title">Stage Two</h3></a> </div>
+        <div class="item icon">
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"><img width="240" height="300" src="{% static 'images/carrot.png' %}" class="attachment-square size-square entered lazyloaded" alt="Cartoon carrot illustration" decoding="async"><noscript></noscript><h3 class="title">Stage Three</h3></a> </div>
+        <div class="item icon">
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample4"><img width="240" height="300" src="{% static 'images/pear.png' %}" class="attachment-square size-square entered lazyloaded" alt="Cartoon pear illustration" decoding="async"><noscript></noscript><h3 class="title">Finger Foods</h3></a> </div>
+        <div class="item icon">
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample5" role="button" aria-expanded="false" aria-controls="multiCollapseExample5"><img width="240" height="300" src="{% static 'images/grapple.png' %}" class="attachment-square size-square entered lazyloaded" alt="Cartoon apple illustration" decoding="async"><noscript></noscript><h3 class="title">Baby Led Weaning</h3></a> </div>
+        <div class="item icon">
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample6" role="button" aria-expanded="false" aria-controls="multiCollapseExample6"><img width="240" height="300" src="{% static 'images/bluebs.png' %}" class="attachment-square size-square entered lazyloaded" alt="Cartoon blueberries illustration" decoding="async"><noscript></noscript><h3 class="title">Toddlers</h3></a> </div>
+        <div class="item icon">
+        <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample7" role="button" aria-expanded="false" aria-controls="multiCollapseExample7"><img width="240" height="300" src="{% static 'images/eggplant.png' %}" class="attachment-square size-square entered lazyloaded" alt="Cartoon Eggplant Illustration" decoding="async"><noscript></noscript><h3 class="title">Kid Friendly</h3></a> </div>
         </div>
-    </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
 
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
-</div>
+        <div class="collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
 {%endblock%}
