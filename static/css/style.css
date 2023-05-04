@@ -348,7 +348,35 @@ body.home .tagline {
 
 
 .btn-primary {
-    color: #e8e8e8;;
-    background-color: #e8e8e8;;
-    border-color: #0d6efd;
+background: transparent;
+}
+
+.title {
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .1em;
+    margin: 8px 0 0;
+}
+
+.items .item .title {
+    margin: 15px 0 0;
+    word-wrap: break-word;
+    clear: both;
+    text-align: center;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+h3 {
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin: 25px 0;
+    color: #403e3f;
+}
+
+.btn-link:hover .title {
+    color: #e02727;
 }
