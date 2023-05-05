@@ -20,7 +20,7 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <!-- Font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="ttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +81,7 @@
                         {% if user.profile.image %}
                         <li><img class="author-img" src="{{ user.profile.image.url }}" alt="User Image"></li>
                         {% else %}
-                        <li><img class="author-img" src="{% static 'images/small-img/user_profile_placeholder.jpg' %}" alt="User Image"></li>
+                        <li><img class="author-img" src="{% static 'images/blank-profile-picture.png' %}" alt="User Image"></li>
                         {% endif %}
                         <li>
                             <a class="nav-link test-center" href="{% url 'account_logout' %}" aria-label="Go to the logout page"> Logout <i class="fa fa-sign-out" aria-hidden="true"></i>|</a>
