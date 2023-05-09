@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.views.generic import UpdateView
 
+
 def about(request):
     """
     Renders the about page
@@ -35,6 +36,7 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by('created_on')
+        category = post.category
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -47,7 +49,7 @@ class PostDetail(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
-                "category": Category,
+                "category": category,
                 "comment_form": CommentForm()
             },
         )
@@ -175,11 +177,12 @@ def delete_post(request, slug):
         messages.error(request, 'Sorry. \
             You are not authorised to perform that operaiton.')
 
-class CategoryList(generic.ListView):
+
+class CatListView(generic.ListView):
     """
     For displaying categories
     """
-    template_name = 'cat.html'
+    template_name = 'category.html'
     context_object_name = 'catlist'
 
     def get_queryset(self):

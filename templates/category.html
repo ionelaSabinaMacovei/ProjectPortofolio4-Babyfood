@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Category{% endblock %}
+{% block content %}
+{% load humanize %}
+{% load static %}
+
+<section class="py-5 vh-sm-80">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <!-- Show all posts -->
+            <h1 class="text-center pb-5"><strong>Post Category: {{ catlist.cat|title }}</strong></h1>
+            {% for post in catlist.posts %}
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="image-container">
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img class="card-img-top"
+                                src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
+                                alt="placeholder_image">
+                            {% else %}
+                            <img class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
+                            {% endif %}
+                            <a href="{% url 'post_detail' post.slug  %}">
+                                <h2 class="card-title">{{ post.title }}</h2>
+                            </a>
+                        </div>
+                        <div class="image-flash">
+                            <p class="author">Submitted by: {{ post.author }}
+
+                                <!-- Only users that are logged in can edit/ delete their own post -->
+
+                                {% if user.id == post.author.id %}
+                                <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
+                                <small><a class="text-danger" href="{% url 'delete_post' post.slug %}">
+                                        Delete</a></small>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <p class="card-text">{{post.content|slice:":200" }} <a href="{% url 'post_detail' post.slug  %}"
+                                class="">... continue reading &rarr;</a></p>
+                        <hr>
+                        <p class="card-text text-muted ">
+                            <i class="far fa-thumbs-up"></i> {{ post.number_of_likes }} |
+                            {{ post.updated_on | naturaltime }} | <a
+                                href="/category/{{ post.category }}">{{ post.category|title }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-lg-8">
+                <img class="card-img-top" src="https://res.cloudinary.com/rashdogg74/image/upload/v1665087640/static/images/sad_jqodcl.webp" alt="sad image because no results">
+                <h2 class="text-center">Sorry, currently there are no posts in this category. 
+                    <a class="hidden-link" href="{% url 'add_post' %}">Add one?</a></h2>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

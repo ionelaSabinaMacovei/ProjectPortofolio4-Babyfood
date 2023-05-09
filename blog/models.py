@@ -51,6 +51,8 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,
+                                 related_name="categories")
 
     class Meta:
         """ Ordering class """
