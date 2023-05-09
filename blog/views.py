@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.utils.text import slugify
-
+from django.views.generic import UpdateView
 
 def about(request):
     """
@@ -229,7 +229,7 @@ def delete_comment(request, pk):
 
 
 @login_required
-def profile_view(request, slug, *args):
+def profile_view(request):
     """
     Renders the profile page
     """
@@ -241,7 +241,7 @@ def profile_view(request, slug, *args):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your account has been updated!')
-            return redirect('profile', args=[slug])
+            return redirect('profile')
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
