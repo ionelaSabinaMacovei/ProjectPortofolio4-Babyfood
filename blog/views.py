@@ -229,7 +229,7 @@ def delete_comment(request, pk):
 
 
 @login_required
-def profile_view(request):
+def profile_view(request, slug, *args):
     """
     Renders the profile page
     """
@@ -241,7 +241,7 @@ def profile_view(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your account has been updated!')
-            return redirect('profile')
+            return redirect('profile', args=[slug])
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
