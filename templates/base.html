@@ -96,7 +96,26 @@
                     </ul>
                         {% endif %}
                 
-                <p id="search-box-button" class="btn"><i class="fas fa-search"></i></p>
+                    <form class="d-flex input-group w-auto" method="GET" action="/search/">
+                        <input type="text" name="q" class="form-control" placeholder="Type query"
+                            aria-label="Search">
+                        <button class="btn btn-outline-primary" type="submit" data-mdb-ripple-color="dark">
+                            Search
+                        </button>
+                    </form>
+
+                    <div id="top-search">
+						<a class="search-click"><i class="fa fa-search"></i></a>
+						<div class="show-search" style="display: none;">
+							<form role="search" method="get" id="searchform" action="https://www.cookingformybaby.com/en/">
+                                <div>
+		                            <input type="text" class="search-input" placeholder="Find a baby food recipe, an advice..." name="s" id="s">
+	                             </div>
+                            </form>							
+                            <a class="search-click close-search"><i class="fa fa-close"></i></a>
+						</div>
+					</div>
+
             </div>
         </div>
     </nav>
