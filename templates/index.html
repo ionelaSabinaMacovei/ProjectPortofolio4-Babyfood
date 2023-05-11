@@ -83,51 +83,78 @@
           </div>
 </section>
 
+
  
 <!-- Blog Entries Column -->
 <section class="post">
-        <!-- Show all posts -->
+  <!-- Show all posts -->
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+           <h1 class="page-title">Recipes</h1>
+      </div>
+    </div>
+    <hr class="home-break">
+    <br>
+<!-- Recipe Cards -->
+    <div class="row card-deck">
+        {% for post in post_list %}
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+            <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
+                {% if "placeholder" in post.featured_image.url %}
+                <img class="card-img-top"
+                    src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
+                    alt="placeholder_image">
+                {% else %}
+                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
+                {% endif %}
+                <div class="card-body pb-1">                    
+                  <h2 class="card-title recipe-detail-title text-truncate">{{ post.title }}</h2>
+                  <p class="card-text">
+                    <span><i class="far fa-clock pr-2"></i></span>
+                    <span>Cook Time: {{ recipe.cook_time }}</span>
+                </p>
+                <p class="author">Submitted by: {{ post.author }}
+         
+                  <!-- Only users that are logged in can edit/ delete their own post -->
 
-                     {% for post in post_list %}
-                     <div class="col-md-4">
-                         <div class="card mb-4">
-                             <div class="card-body">
-                                 <div class="image-container">
-                                     {% if "placeholder" in post.featured_image.url %}
-                                     <img class="card-img-top"
-                                         src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
-                                         alt="placeholder_image">
-                                     {% else %}
-                                     <img class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
-                                     {% endif %}
-                                     <a href="{% url 'post_detail' post.slug  %}">
-                                         <h2 class="card-title">{{ post.title }}</h2>
-                                     </a>
-                                 </div>
-                                 <div class="image-flash">
-                                     <p class="author">Submitted by: {{ post.author }}
-         
-                                         <!-- Only users that are logged in can edit/ delete their own post -->
-         
-                                         {% if user.id == post.author.id %}
-                                         <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
-                                         <small><a class="text-danger" href="{% url 'delete_post' post.slug %}">
-                                                 Delete</a></small>
-                                         {% endif %}
-                                     </p>
-                                 </div>
-                                 <p class="card-text">{{post.content|slice:":200" }} <a href="{% url 'post_detail' post.slug  %}"
-                                         class="hidden-link">... continue reading &rarr;</a></p>
-                                 <hr>
-                                 <p class="card-text text-muted ">
-                                    <i class="far fa-thumbs-up"></i> {{ post.number_of_likes }} 
-                                    <a href="/category/{{ post.category }}">{{ post.category|title }}</a>
-                                 </p>
-                             </div>
-                         </div>
-                     </div>
-                     {% endfor %}
-                 </div>
-             </div>
+                  {% if user.id == post.author.id %}
+                  <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
+                  <small><a class="text-danger" href="{% url 'delete_post' post.slug %}">
+                          Delete</a></small>
+                  {% endif %}
+              </p>
+              <p class="card-text text-muted ">
+                <i class="far fa-thumbs-up"></i> {{ post.number_of_likes }} 
+                <a href="/category/{{ post.category }}">{{ post.category|title }}</a>
+             </p>
+              <a href="{% url 'post_detail' post.slug  %}"></a>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+<!-- Pagination -->
+
+  {% if is_paginated %}
+  <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+
+          {% if page_obj.has_previous %}
+
+          <li><a href="?page={{ page_obj.previous_page_number }}" aria-label="Go to the blog next page" class="page-link">&laquo; PREV </a></li>
+
+          {% endif %}
+          {% if page_obj.has_next %}
+
+          <li><a href="?page={{ page_obj.next_page_number }}" aria-label="Go to the blog back page" class="page-link"> NEXT &raquo;</a></li>
+
+          {% endif %}
+      </ul>
+  </nav>
+  {% endif %}
 </section>
 {%endblock%}
