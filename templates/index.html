@@ -108,8 +108,9 @@
                 {% else %}
                 <img class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
                 {% endif %}
-                <div class="card-body pb-1">                    
-                  <h2 class="card-title recipe-detail-title text-truncate">{{ post.title }}</h2>
+                <div class="card-body pb-1"> 
+                  <a href="{% url 'post_detail' post.slug  %}">         
+                  <h2 class="card-title recipe-detail-title text-truncate">{{ post.title }}</h2></a> 
                   <p class="card-text">
                     <span><i class="far fa-clock pr-2"></i></span>
                     <span>Cook Time: {{ recipe.cook_time }}</span>
@@ -128,7 +129,7 @@
                 <i class="far fa-thumbs-up"></i> {{ post.number_of_likes }} 
                 <a href="/category/{{ post.category }}">{{ post.category|title }}</a>
              </p>
-              <a href="{% url 'post_detail' post.slug  %}"></a>
+              
             </div>
         </div>
       </div>
