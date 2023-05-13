@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.text import slugify
 from django.views.generic import UpdateView
 
@@ -84,7 +85,7 @@ class PostDetail(View):
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
-                "comment_form": comment_form()
+                "comment_form": comment_form,
             },
         )
 
@@ -225,10 +226,21 @@ def post_search(request):
 
 @login_required
 def delete_comment(request, pk):
-    """ Delete a comment in the blog """
+    """ Delete a comment in the blog
+    """
     Comment.objects.get(pk=pk).delete()
     messages.success(request, 'The comment was deleted successfully!')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+class edit_comment(SuccessMessageMixin, UpdateView):
+    """
+    Edit comment
+    """
+    model = Comment
+    template_name = 'edit_comment.html'
+    form_class = CommentForm
+    success_message = 'The comment was successfully updated'
 
 
 @login_required
