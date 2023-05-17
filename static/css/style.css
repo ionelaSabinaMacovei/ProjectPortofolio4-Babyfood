@@ -1,6 +1,7 @@
 body {
-    background-color: #F9FAFC;
+    background-color: rgb(55, 212, 37);
     font-family: 'Comic Neue', cursive;
+    font-weight: 300;
 }
 
 .brand {
@@ -8,12 +9,14 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
+    background-color: rgb(55, 212, 37);
+
 }
 
 .navbar {
+    background-color: rgb(55, 212, 37);
     width: 100%;
     height: 80px;
-    background-color: #e4ec69;
     z-index: 1500;
     position: fixed;
 }
@@ -63,25 +66,6 @@ body {
     width: 15rem;
     margin-top: -2.5rem;
 }
-.red-o {
-    color: #E84610;
-}
-
-.thin {
-    font-weight: 300;
-}
-
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
-}
 
 .card {
     border: none;
@@ -92,52 +76,10 @@ body {
     position: relative;
 }
 
-.image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #23BBBB;
-}
-
 .author {
     color: white;
     margin: 4px;
     text-transform: uppercase;
-}
-
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
 }
 
 .post-link {
@@ -387,39 +329,7 @@ h3 {
     width: 100%;
 }
 
-.masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
 
-.masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-}
 
 .post-link {
     text-decoration: none;
