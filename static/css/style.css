@@ -13,6 +13,10 @@ body {
 
 }
 
+img {
+    width: 100%;
+}
+
 .navbar {
     background-color: rgb(55, 212, 37);
     width: 100%;
@@ -416,11 +420,63 @@ strong {
     margin-top: 10%;
 }
 
-h1 .title {
+h1.title {
     font-size: clamp(2.5rem, 2vw, 3rem);
     text-align: center;
     font-weight: 900;
     letter-spacing: 2px;
     padding: 25px;
     margin-bottom: 25px;
+}
+
+.enjoy-box span {
+    font-family: 'Kaushan Script', cursive;
+}
+
+.py-5 {
+    padding-top: 5rem!important;
+    padding-bottom: 5rem!important;
+}
+
+#profile .col-md-6 img {
+    width: 80px;
+    height: 80px;
+}
+
+.mt-5 {
+    margin-top: 6rem!important;
+}
+
+h2.title {
+    font-size: clamp(2.5rem, 2vw, 3rem);
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+/*******************************
+*                              *
+*        PROFILE PAGE          *
+*                              *
+*******************************/
+#profile {
+    text-align: center;
+    padding: 25px 0 35px;
+}
+
+#profile .col-md-6 img {
+    width: 80px;
+    height: 80px;
+}
+
+#profile .user-info-box {
+    text-align: left;
+    color: var(--text-color-light);
+}
+
+#profile .form-control {
+    width: 70% !important;
+    margin: 0 auto;
 }
