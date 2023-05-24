@@ -480,3 +480,13 @@ h2.title {
     width: 70% !important;
     margin: 0 auto;
 }
+
+/*******************************
+*                              *
+*        FOOTER                *
+*                              *
+*******************************/
+#socials {
+    margin-bottom: 1rem!important;
+    margin-top: auto;
+}
