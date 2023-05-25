@@ -267,3 +267,13 @@ def profile_view(request):
     }
     return render(request, 'profile.html', context)
 
+
+@login_required(login_url='sign_in')
+def delete_account(request):
+    profile = request.user.profile
+    if request.method == 'POST':
+        profile.delete()
+        messages.success(request, 'Account Deleted!')
+        return redirect('home')
+    return render(request, 'delete_user.html')
+

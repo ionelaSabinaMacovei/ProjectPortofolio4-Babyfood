@@ -73,7 +73,7 @@
                     <!-- User authentication -->
                     <li class="nav-item display-inline">
                         <li><a href="{% url 'profile' %}"><p class="nav-link">| <i class="fa fa-user" aria-hidden="true"></i>{{ user.username | slice:":10" }}</p></a></li>
-                        {% if profile.profile.image %}
+                        {% if user.profile.image %}
                         <li><img class="author-img" src="{{ user.profile.image.url }}" alt="User Image"></li>
                         {% else %}
                         <li><img class="author-img" src="{% static 'images/blank-profile-picture.png' %}" alt="User Image"></li>
