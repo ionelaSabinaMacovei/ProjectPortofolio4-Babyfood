@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -12,8 +13,14 @@ class Profile(models.Model):
     """
     Model for user profile
     """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, null=True, blank=True)
+    email = models.EmailField(max_length=500, blank=True, null=True)
     image = CloudinaryField('image')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -42,11 +49,12 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts"
+        Profile, null=True, blank=True, on_delete=models.CASCADE, related_name="blog_posts"
     )
     featured_image = CloudinaryField('image', default='placeholder')
+    ingredients = models.TextField()
+    method = models.TextField()
     updated_on = models.DateTimeField(auto_now=True)
-    content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(
