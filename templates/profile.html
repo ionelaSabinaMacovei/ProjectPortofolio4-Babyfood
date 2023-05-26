@@ -46,44 +46,8 @@
 </section>
 <section>
     <!-- If user is visiting own profile page show recipe crud functionality -->
-    <!-- If user is on another users profile page show users recipes -->
-    {% if user.id == request.user.profile.id %}
-    <div
-        class="profile-details card border border-dark border-2 rounded-4 col-12 col-md-10 col-lg-7 col-xl-6 p-4 m-0 m-xl-3 mt-3 mb-5 mb-xl-2">
-        <h5 class="card-title">My Recipes:</h5>
-        <hr>
-        <ul>
-            {% for post_detail in user.post_set.all %}
-
-            <li class="recipe-li">
-                <span class="recipe-li-title">{{post.title}}</span>
-            </li>
-
-            <li class="li">
-                <div id="crud-recipe-img">
-                    {% if 'placeholder' in post.featured_image.url %}
-                    <a href="{% url 'post' post.id %}">
-                        <img class="thumbnail-img border border-dark border-2 rounded-4"
-                            src="{% static 'images/empty-bowl.jpg' %}" alt="Card image cap"></a>
-                    {% else %}
-                    <a href="{% url 'post' post.id %}">
-                        <img class="thumbnail-img border border-dark border-2 rounded-4"
-                            src="{{post.featured_image.url}}" alt="Card image cap"></a>
-                    {% endif %}
-                </div>
-
-                <div id="right-align">
-                    <a href="{% url 'edit_post' post.slug %}">
-                        <button class="recipe-li-btn border border-dark border-2 rounded-4">Edit</button>
-                    </a>
-                    <a href="{% url 'delete_post' post.slug %}">
-                        <button class="recipe-li-btn border border-dark border-2 rounded-4">Delete</button>
-                    </a>
-                </div>
-            </li>
-
-            {% endfor %}
-        </ul>
+    {% if user.is_authenticated %}
+    <div>
         <a href="{% url 'add_post' %}">
             <button id="msg-btn" class="btn">Add Recipe</button>
         </a>

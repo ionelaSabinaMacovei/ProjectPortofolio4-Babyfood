@@ -12,7 +12,7 @@
                 {% csrf_token %}
                 <p>Are you sure you want to delete your Account??</p>
                 
-                    <a class="login-register btn btn-primary" href="{% url 'user_profile' request.user.profile.id %}">
+                    <a class="login-register btn btn-primary" href="{% url 'profile' %}">
                         Back
                     </a>
                 
