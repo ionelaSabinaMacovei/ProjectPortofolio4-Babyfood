@@ -99,17 +99,18 @@
 <!-- Recipe Cards -->
     <div class="row card-deck">
         {% for post in post_list %}
-        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+        <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
                 {% if "placeholder" in post.featured_image.url %}
-                <img class="card-img-top"
+                <img width="400" height="300" class="card-img-top rounded"
                     src="{% static 'images/deafult-pic-recipie.png' %}"
                     alt="placeholder_image">
                 {% else %}
-                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
+                <img width="400" height="300" class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
                 {% endif %}
+
                 <div class="card-body pb-1"> 
-                  <a href="{% url 'post_detail' post.slug  %}">         
+                  <a href="{% url 'post_detail' post.slug  %}" class="post-link">         
                   <h2 class="card-title recipe-detail-title text-truncate">{{ post.title }}</h2></a> 
                 <p class="author">Submitted by: {{ post.author }}
          

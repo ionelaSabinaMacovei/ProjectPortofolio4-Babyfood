@@ -73,24 +73,24 @@
                 <ul class="d-flex login-box">
                     <!-- User authentication -->
                     <li class="nav-item display-inline">
-                        <li><a href="{% url 'profile' %}"><p class="nav-link">| <i class="fa fa-user" aria-hidden="true"></i>{{ user.username | slice:":10" }}</p></a></li>
+                        <li><a href="{% url 'profile' %}"><p class="nav-link">{{ user.username | slice:":10" }}</p></a></li>
                         {% if user.profile.image %}
                         <li><img class="author-img" src="{{ user.profile.image.url }}" alt="User Image"></li>
                         {% else %}
                         <li><img class="author-img" src="{% static 'images/blank-profile-picture.png' %}" alt="User Image"></li>
                         {% endif %}
                         <li>
-                            <a class="nav-link test-center" href="{% url 'account_logout' %}" aria-label="Go to the logout page"> Logout <i class="fa fa-sign-out" aria-hidden="true"></i>|</a>
+                            <a class="nav-link test-center" href="{% url 'account_logout' %}" aria-label="Go to the logout page"> Logout</a>
                         </li>
                     </li>
                 </ul>
                     {% else %}
                     <ul class="d-flex logout-box">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_signup' %}" aria-label="Go to the signup page">| Register</a>
+                            <a class="nav-link" href="{% url 'account_signup' %}" aria-label="Go to the signup page">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_login' %}" aria-label="Go to the login page">Login |</a>
+                            <a class="nav-link" href="{% url 'account_login' %}" aria-label="Go to the login page">Login</a>
                         </li>
                     </ul>
                         {% endif %}
