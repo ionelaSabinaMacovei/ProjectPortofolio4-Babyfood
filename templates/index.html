@@ -103,7 +103,7 @@
             <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
                 {% if "placeholder" in post.featured_image.url %}
                 <img class="card-img-top"
-                    src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80"
+                    src="{% static 'images/deafult-pic-recipie.png' %}"
                     alt="placeholder_image">
                 {% else %}
                 <img class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
@@ -111,10 +111,6 @@
                 <div class="card-body pb-1"> 
                   <a href="{% url 'post_detail' post.slug  %}">         
                   <h2 class="card-title recipe-detail-title text-truncate">{{ post.title }}</h2></a> 
-                  <p class="card-text">
-                    <span><i class="far fa-clock pr-2"></i></span>
-                    <span>Cook Time: {{ post.cook_time }}</span>
-                </p>
                 <p class="author">Submitted by: {{ post.author }}
          
                   <!-- Only users that are logged in can edit/ delete their own post -->

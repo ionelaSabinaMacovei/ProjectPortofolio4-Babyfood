@@ -2,7 +2,7 @@ body {
     background-color: rgb(233 196 209);
     font-family: 'Comic Neue', cursive;
     font-weight: 300;
-    background-image: url('../images/background1.png');
+    background-image: url('../images/background6.png');
     background-size: 200rem;
     background-repeat: no-repeat;
     background-position: right;
@@ -28,7 +28,6 @@ img {
     width: 100%;
     height: 80px;
     z-index: 1500;
-    position: fixed;
 }
 
 .navbar-brand {
@@ -56,14 +55,99 @@ img {
 .navbar .btn {
     background-color: transparent;
 }
+
+.login-box {
+    margin-right: -10px;
+    margin-top: 35px;
+}
+
+.login-box .nav-link {
+    padding: 0.5rem 0.5rem;
+}
+
+.logout-box {
+    margin-right: -15px;
+    margin-top: 15px;
+}
+
+.login-box .author-img {
+    width: 30px;
+    height: 30px;
+    margin-top: 8px;
+}
+
+.alert{
+    margin-top: 80px;
+}
+
+.nav-link.nav-active {
+    color: #fff !important;
+}
+
+.nav-link {
+    color: black;
+    -webkit-transition: all ease-in 0.3s;
+    -o-transition: all ease-in 0.3s;
+    transition: all ease-in 0.3s;
+    list-style-type: none;  
+}
+
 #links {
     margin-right: auto;
 }
-.ul {
+ul {
     margin-top: 0;
     margin-bottom: 1rem;
     margin-right: auto;
-    
+    list-style-type: none;  
+}
+
+.navbar .dropdown-menu {
+    background-color: #ebebeb;
+    border: 1px solid white;   
+}
+
+.navbar .dropdown-menu a {
+    background-color: #ebebeb;
+    opacity: 1;
+}
+
+.navbar .dropdown-menu a:hover {
+    background-color: white;
+    opacity: 1;
+}
+
+.login-box {
+    margin-right: -10px;
+    margin-top: 35px;
+}
+
+.login-box .nav-link {
+    padding: 0.5rem 0.5rem;
+}
+
+.logout-box {
+    margin-right: -15px;
+    margin-top: 15px;
+}
+
+.login-box .author-img {
+    width: 30px;
+    height: 30px;
+    margin-top: 8px;
+}
+
+#search-box-button {
+    margin-top: 25px;
+}
+
+.alert-fixed {
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    width: 100%;
+    z-index: 9999;
+    border-radius: 0px;
 }
 
 .justify-content-end {
@@ -140,7 +224,7 @@ img {
 
 /*******************************
 *                              *
-*         LOGS PAGES           *
+*         Hero Section           *
 *                              *
 *******************************/
 
@@ -295,7 +379,7 @@ body.home .tagline {
     border-bottom: 1px solid #e8e8e8;
     margin: 0 0 40px;
     padding: 10px;
-    margin-top: 75px;
+    margin-top: 90px;
 }
 
 
@@ -368,53 +452,7 @@ h3 {
     margin: 15px 5px 0 0;
 }
 
-.navbar .dropdown-menu {
-    background-color: #ebebeb;
-    border: 1px solid white;   
-}
 
-.navbar .dropdown-menu a {
-    background-color: #ebebeb;
-    opacity: 1;
-}
-
-.navbar .dropdown-menu a:hover {
-    background-color: white;
-    opacity: 1;
-}
-
-.login-box {
-    margin-right: -10px;
-    margin-top: 35px;
-}
-
-.login-box .nav-link {
-    padding: 0.5rem 0.5rem;
-}
-
-.logout-box {
-    margin-right: -15px;
-    margin-top: 15px;
-}
-
-.login-box .author-img {
-    width: 30px;
-    height: 30px;
-    margin-top: 8px;
-}
-
-#search-box-button {
-    margin-top: 25px;
-}
-
-.alert-fixed {
-    position: fixed;
-    top: 60px;
-    left: 0px;
-    width: 100%;
-    z-index: 9999;
-    border-radius: 0px;
-}
 
 
 strong {
@@ -495,4 +533,37 @@ h2.title {
 #socials {
     margin-bottom: 1rem!important;
     margin-top: auto;
+}
+
+/*******************************
+*                              *
+*        Home Page             *
+*                              *
+*******************************/
+
+.container {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+.col {
+    flex: 1 0 0%;
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
 }
