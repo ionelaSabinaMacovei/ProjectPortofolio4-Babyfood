@@ -21,7 +21,6 @@
                 <h3>Username: {{ user.username | slice:":15" }}</h3>
                 <h3>Email: {{ user.email }}</h3>
                 <h3>Time Logged: {{ user.last_login | timesince }}</h3>
-                <h3>Member Since: {{user.created_on}}</p>
                 {% if user.is_superuser %}
                 <h3>Status: Superuser</h3>
                 {% else %}

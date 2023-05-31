@@ -570,3 +570,20 @@ h2.title {
     left: -2px;
     background-color: #23BBBB;
 }
+
+a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+
+/*******************************
+*                              *
+*        About Page             *
+*                              *
+*******************************/
+
+.enjoy-box span {
+    font-family: 'Kaushan Script', cursive;
+    font-size: xx-large;
+}
