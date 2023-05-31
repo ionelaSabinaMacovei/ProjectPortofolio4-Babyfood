@@ -163,12 +163,12 @@ ul {
 }
 
 
-
 /*******************************
 *                              *
-*         Hero Section           *
+*         Logs Pages           *
 *                              *
 *******************************/
+
 
 .logs-pages {
     margin-bottom: 250px;
@@ -201,6 +201,16 @@ ul {
     max-width: 1160px;
 }
 
+.log-out {
+    height: 50vh;
+    margin-bottom: 0px;
+}
+
+/*******************************
+*                              *
+*         Hero Section         *
+*                              *
+*******************************/
 
 .items {
     overflow: visible;
@@ -453,8 +463,8 @@ h2.title {
 }
 
 #profile .col-md-6 img {
-    width: 80px;
-    height: 80px;
+    width: 50%;
+    height: 50%;
 }
 
 #profile .user-info-box {
@@ -466,6 +476,12 @@ h2.title {
     width: 70% !important;
     margin: 0 auto;
 }
+
+.mt-5 {
+    margin-top: 2rem!important;
+    margin-bottom: 2rem;
+}
+
 
 /*******************************
 *                              *
@@ -586,4 +602,35 @@ a {
 .enjoy-box span {
     font-family: 'Kaushan Script', cursive;
     font-size: xx-large;
+}
+
+/*******************************
+*                              *
+*        Post Detail           *
+*                              *
+*******************************/
+
+.image-flash {
+    position: absolute;
+    bottom: 4.5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: #df0c2e;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+.text-muted {
+    color: #000!important;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.mb-5 {
+    margin-bottom: 1rem!important;
 }

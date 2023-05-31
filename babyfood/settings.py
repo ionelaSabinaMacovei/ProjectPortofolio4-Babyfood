@@ -32,7 +32,7 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost', '8000-ionelasabin-projectport-7rf4g25kyx4.ws-eu98.gitpod.io']
 
 
 # Application definition

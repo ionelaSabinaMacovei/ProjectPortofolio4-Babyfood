@@ -14,7 +14,7 @@
                 <h3>{% trans "Sign In" %}</h3>
 
                 <p>{% blocktrans %}Welcome back to the Babylicious Blog. To leave a comment, like a post or add a new post, please log in. If
-                    you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>first.{% endblocktrans %}
+                    you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
                 </p>
             </div>
         </div>
@@ -26,7 +26,7 @@
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}
-                    <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
+                    <button class="btn btn-signup right btn-success" type="submit">{% trans "Sign In" %}</button>
                 </form>
             </div>
         </div>

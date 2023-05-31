@@ -5,6 +5,7 @@
 {% block content %}
 
 <!-- PROFILE SECTION -->
+
 <section id="profile">
     <h2 class="title mt-5">Profile Info</h2>
     <div class="container">
@@ -42,22 +43,23 @@
     {% if user.is_superuser %}
     <a class="btn btn-secondary mt-5" href="/admin" target="_blank" aria-label="Go to the Admin Panel">Admin Panel</a>
     {% endif %}
-</section>
-<section>
-    <!-- If user is visiting own profile page show recipe crud functionality -->
-    {% if user.is_authenticated %}
-    <div>
-        <a href="{% url 'add_post' %}">
-            <button id="msg-btn" class="btn">Add Recipe</button>
-        </a>
-        <a href="{% url 'delete_account' %}">
-            <button id="msg-btn" class="btn">Delete Profile</button>
-        </a>
+    <section id="profile-btn">
+        <!-- If user is visiting own profile page show recipe crud functionality -->
+        {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'add_post' %}">
+                <button id="msg-btn" class="btn btn-light">Add Recipe</button>
+            </a>
+            <a href="{% url 'delete_account' %}">
+                <button id="msg-btn" class="btn btn-danger ">Delete Profile</button>
+            </a>
+        </div>
+    {% endif %}
     </div>
-{% endif %}
-</div>
-    
+        
+    </section>
 </section>
+
 <!-- END OF PROFILE SECTION -->
 
 {% endblock content %}

@@ -19,24 +19,25 @@
                                 src="https://res.cloudinary.com/dvj7dxhwj/image/upload/v1685463084/do0tmwzerelcbcqzbd55.png"
                                 alt="placeholder_image">
                             {% else %}
-                            <img class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
+                            <img class="card-img-top" width="500" height="500"  src="{{ post.featured_image.url }}" alt="featured_image">
                             {% endif %}
+                            <div class="image-flash">
+                                <p class="author">Submitted by: {{ post.author }}
+                                    <small class="text-muted">{{ post.updated_on | naturaltime }} </small>
+    
+                                    <!-- Only users that are logged in can edit/ delete their own post -->
+    
+                                    {% if user.id == post.author.id %}
+                                    <small class="text-muted"><a href="{% url 'edit_post' post.slug %}"> Edit</a></small>
+                                    <small> | </small>
+                                    <small class="text-danger"><a href="{% url 'delete_post' post.slug %}">
+                                            Delete</a></small>
+                                    {% endif %}
+                                </p>
+                            </div>
                             <h2 class="card-title">{{ post.title }}</h2>
                         </div>
-                        <div class="image-flash">
-                            <p class="author">Submitted by: {{ post.author }}
-                                <small class="text-muted">{{ post.updated_on | naturaltime }} </small>
 
-                                <!-- Only users that are logged in can edit/ delete their own post -->
-
-                                {% if user.id == post.author.id %}
-                                <small class="text-muted"><a href="{% url 'edit_post' post.slug %}"> Edit</a></small>
-                                <small> | </small>
-                                <small class="text-danger"><a href="{% url 'delete_post' post.slug %}">
-                                        Delete</a></small>
-                                {% endif %}
-                            </p>
-                        </div>
                         <h2 class="mt-4 mb-5">Ingredients:</h2>
                         <p class="card-text">{{ post.ingredients | linebreaksbr }}</p>
                         <h2 class="mt-3 mb-5">Method:</h2>
@@ -47,23 +48,23 @@
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
-                                        class="fas fa-thumbs-up"></i></button>{{ post.number_of_likes }} | <a
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i 
+                                    class="bi bi-heart-fill"></i></button>{{ post.number_of_likes }} | <a
                                     href="/category/{{ post.category }}">{{ post.category|title }}</a> |
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
-                                        class="far fa-thumbs-up"></i></button>{{ post.number_of_likes }} | <a
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i 
+                                    class="bi bi-heart-fill"></i></button>{{ post.number_of_likes }} | <a
                                     href="/category/{{ post.category }}">{{ post.category|title }}</a> |
                                 {% endif %}
                             </form>
                             {% else %}
                             <p class="card-text d-inline">
-                                <i class="far fa-thumbs-up"></i> {{ post.number_of_likes }} | <a
+                                <i class="bi bi-heart-fill"></i> {{ post.number_of_likes }} | <a
                                     href="/category/{{ post.category }}">{{ post.category|title }}</a> |
                             </p>
                             {% endif %}
                             {% with comments.count as total_comments %}
-                            <i class="far fa-comments"></i>
+                            <i class="bi bi-chat-fill"></i>
                             {{ total_comments }}
                             {% endwith %}
                         </p>
