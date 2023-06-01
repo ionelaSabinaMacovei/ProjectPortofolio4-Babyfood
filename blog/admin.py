@@ -4,7 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Post)
-class PostAdmin(SummernoteModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     """
     Add field for recipe/post in admin panel
     """
