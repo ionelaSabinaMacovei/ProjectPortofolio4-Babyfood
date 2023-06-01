@@ -2,8 +2,9 @@ body {
     background-color: rgb(233 196 209);
     font-family: 'Comic Neue', cursive;
     font-weight: 300;
-    background-image: url('../images/background3.jpg');
-    background-size: 200rem;
+    
+
+    background-size: 200rem;background-image: url('https://res.cloudinary.com/dvj7dxhwj/image/upload/v1685619591/background3_klulm3.jpg');
     background-repeat: no-repeat;
     background-position: right;
     margin: 0;
