@@ -26,18 +26,7 @@
                                 <h2 class="card-title">{{ post.title }}</h2>
                             </a>
                         </div>
-                        <div class="image-flash">
-                            <p class="author">Submitted by: {{ post.author }}
 
-                                <!-- Only users that are logged in can edit/ delete their own post -->
-
-                                {% if user.id == post.author.id %}
-                                <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
-                                <small><a class="text-danger" href="{% url 'delete_post' post.slug %}">
-                                        Delete</a></small>
-                                {% endif %}
-                            </p>
-                        </div>
                         <p class="card-text">{{post.content|slice:":200" }} <a href="{% url 'post_detail' post.slug  %}"
                                 class="">... continue reading &rarr;</a></p>
                         <hr>
