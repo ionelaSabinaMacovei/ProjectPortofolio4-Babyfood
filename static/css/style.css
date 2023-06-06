@@ -215,6 +215,11 @@ ul {
 *         Hero Section         *
 *                              *
 *******************************/
+.nav-item{
+    list-style-type: none; 
+    
+}
+
 
 .items {
     overflow: visible;
