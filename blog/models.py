@@ -56,7 +56,7 @@ class Post(models.Model):
     method = models.TextField()
     updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
@@ -85,7 +85,8 @@ class Comment(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    approved = models.BooleanField(default=False)
+    updated_on = models.DateTimeField(auto_now=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
 
     class Meta:
         ordering = ["created_on"]
@@ -96,5 +97,7 @@ class Comment(models.Model):
     def get_absolute_url(self):
         """Sets absolute URL"""
         return reverse('post_detail', args=[self.post.slug])
-
+    @property
+    def children(self):
+        return BlogComment.objects.filter(parent=self).reverse()
 

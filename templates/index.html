@@ -81,7 +81,7 @@
               Exotic fruits for example, such as persimmon, or passion fruit.
             </div>
           </div>
-
+<div>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
@@ -94,6 +94,7 @@
                 {% endfor %}
             </div>
         </li> 
+      </div>
 </section>
 
 
@@ -131,8 +132,26 @@
 
                   {% if user.id == post.author.id %}
                   <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
-                  <small><a class="text-danger" href="{% url 'delete_post' post.slug %}">
-                          Delete</a></small>
+                  <button type="button" class="btn-delete btn-sm btn-danger mb-3" data-bs-toggle="modal"
+                  data-bs-target="#delete-comment">Delete</button>
+                          <div class="modal fade" id="delete-comment"
+                            tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure you want to delete your post?
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary"
+                                          data-bs-dismiss="modal">Close</button>
+                                      <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger" aria-label="Delete Comment">Delete</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   {% endif %}
               </p>
               <p class="card-text text-muted ">

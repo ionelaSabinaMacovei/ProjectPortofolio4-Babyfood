@@ -82,14 +82,7 @@
                     <h3>Comments:</h3>
                     <!-- Only allowed to comment if user is authenticated -->
 
-                    {% if commented %}
-                    <div class="alert alert-success" role="alert">
-                        Thanks {{ user.username }}. Your comment is awaiting approval!
-                    </div>
-                    {% else %}
-
                     {% if user.is_authenticated %}
-
                     <form method="post" id="comment-form">
                         <p class="text-muted">Posting as: {{ user.username }}</p>
                         {{ comment_form | crispy }}
@@ -98,17 +91,19 @@
                     </form>
 
                     {% endif %}
-                    {% endif %}
+                    
 
                     <div class="card-body px-0">
                         {% for comment in comments %}
                         <div class="comments">
                             <p class="text-muted">
-                                {{ comment.created_on | naturaltime }} {{ comment.name }} wrote:
+                                {{ comment.updated_on | naturaltime }} {{ comment.name }} wrote:
                             </p>
                             {{ comment.body | linebreaks }}
                             {% if user.is_authenticated and user.username == comment.name or user.is_superuser %}
-                            <a href="{% url 'edit_comment' comment.id %}" class="btn-edit btn-sm btn-secondary mb-3" aria-label="Go to the Edit Comments Page">Edit</a>
+                            <a href="{% url 'edit_comment' comment.id %}" class="btn-edit btn-sm btn-secondary mb-3" aria-label="Go to the Edit Comments Page">Edit
+                                
+                            </a>
                              <button type="button" class="btn-delete btn-sm btn-danger mb-3" data-bs-toggle="modal"
                                  data-bs-target="#delete-comment">Delete</button>
                              <!-- Delete comment bootstrap modal-->
@@ -131,9 +126,13 @@
                                  </div>
                              </div>
                              {% endif %}
-                        </div>
+                            
                         <hr>
                         {% endfor %}
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -144,4 +143,4 @@
 </section>
 
 
-{% endblock %}
+{% endblock content %}
