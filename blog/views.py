@@ -65,34 +65,17 @@ class PostDetail(View):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
-        post = Post.objects.get(slug=slug)
         comments = post.comments.order_by('created_on')
-        if request.method == 'POST':
-            comment_form = CommentForm(data=request.POST)
-            if comment_form.is_valid():
-                parent_obj = None
-                try:
-                    parent_id = int(request.POST.get('parent_id'))
-                except:
-                    parent_id = None
-                if parent_id:
-                    parent_obj = Comment.objects.get(id=parent_id)
-                    if parent_obj:
-                        # create replay comment object
-                        replay_comment = comment_form.save(commit=False)
-                        # assign parent_obj to replay comment
-                        replay_comment.parent = parent_obj
-                # normal comment
-                # create comment object but do not save to database
-                new_comment = comment_form.save(commit=False)
-                # assign ship to the comment
-                new_comment.post = post
-                # save
-                new_comment.save()
-                
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
         else:
             comment_form = CommentForm()
-
+           
         return render(
             request,
             "post_detail.html",

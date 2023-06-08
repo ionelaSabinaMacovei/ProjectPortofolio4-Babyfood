@@ -86,8 +86,7 @@ class Comment(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name="replies", null=True, blank=True)
-
+    
     class Meta:
         ordering = ["created_on"]
 
@@ -97,7 +96,5 @@ class Comment(models.Model):
     def get_absolute_url(self):
         """Sets absolute URL"""
         return reverse('post_detail', args=[self.post.slug])
-    @property
-    def children(self):
-        return BlogComment.objects.filter(parent=self).reverse()
+
 

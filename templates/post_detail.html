@@ -28,10 +28,29 @@
                                     <!-- Only users that are logged in can edit/ delete their own post -->
     
                                     {% if user.id == post.author.id %}
-                                    <small class="text-muted"><a href="{% url 'edit_post' post.slug %}"> Edit</a></small>
+                                    <small class="btn" ><a href="{% url 'edit_post' post.slug %}"> Edit</a></small>
                                     <small> | </small>
-                                    <small class="text-danger"><a href="{% url 'delete_post' post.slug %}">
-                                            Delete</a></small>
+                                    <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#delete-comment">Delete</button>
+                                            <div class="modal fade" id="delete-comment"
+                                            tabindex="-1" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                      Are you sure you want to delete your post?
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary"
+                                                          data-bs-dismiss="modal">Close</button>
+                                                      <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger" aria-label="Delete Comment">Delete</a>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
                                     {% endif %}
                                 </p>
                             </div>
@@ -126,7 +145,7 @@
                                  </div>
                              </div>
                              {% endif %}
-                            
+
                         <hr>
                         {% endfor %}
 

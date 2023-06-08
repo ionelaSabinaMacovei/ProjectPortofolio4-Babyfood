@@ -166,6 +166,26 @@ ul {
     margin-top: -2.5rem;
 }
 
+.author {
+    color: white;
+    margin-right: 20%;
+}
+
+.btn:hover{
+    color:#0d6efd;
+}
+
+[role=button] {
+    cursor: pointer;
+    background: border-box;
+    background: border-box;
+    background-color: orange;
+    text-align: center;
+    width: 25%;
+    margin-left: 40%;
+    border-radius: 2px;
+    border-block-style: rounded;
+}
 
 /*******************************
 *                              *
@@ -849,6 +869,19 @@ footer p {
     background-color: #df0c2e;
 }
 
+
+[role=button] {
+    cursor: pointer;
+    background: border-box;
+    background: border-box;
+    background-color: orange;
+    text-align: center;
+    margin-left: 0%;
+    width: 100%;
+
+    border-radius: 2px;
+    border-block-style: rounded;
+}
 
 
 }
