@@ -270,9 +270,7 @@ ul {
 .home-section.icons {
     padding: 0 0 50px;
     margin: 0 0 40px;
-    margin-left: calc(-100vw / 2 + 100% / 2);
-    margin-right: calc(-100vw / 2 + 100% / 2);
-    max-width: 100vw;
+
 }
 
 
@@ -791,10 +789,7 @@ a {
     .home-section.icons {
         padding: 0 0 0px;
         margin: 0 0 0px;
-        margin-left: calc(-100vw / 2 + 100% / 2);
-        margin-right: calc(-100vw / 2 + 100% / 2);
-        max-width: 100vw;
-    }
+
 }
 
 
