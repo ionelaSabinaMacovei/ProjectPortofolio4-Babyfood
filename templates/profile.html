@@ -19,9 +19,7 @@
                 {% endif %}
             </div>
             <div class="user-info-box col-md-6">
-                <a href="{% url 'add_post' %}">
-                    <button id="msg-btn" class="btn btn-primary">Add Recipe</button>
-                </a>
+
                 <h3>Username: {{ user.username | slice:":15" }}</h3>
                 <h3>Email: {{ user.email }}</h3>
                 <h3>Time Logged: {{ user.last_login | timesince }}</h3>

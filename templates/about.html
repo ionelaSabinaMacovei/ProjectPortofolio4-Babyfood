@@ -80,6 +80,21 @@
                   Exotic fruits for example, such as persimmon, or passion fruit.
                 </div>
               </div>
+
+              <div>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Filter your recipies by age!
+                  </a>
+                  <div class="dropdown-menu m-2">
+                      {% for category in category_list %}
+                      <a class="dropdown-item"
+                          href="/category/{{ category.cat_title }}">{{ category.cat_title|title }}</a>
+                      {% endfor %}
+                  </div>
+              </li> 
+            </div>
     </section>
 
     <!-- ABOUT SECTION -->
