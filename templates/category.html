@@ -111,37 +111,66 @@
     <!--  Recipe Cards -->
     <div class="row card-deck">
         {% for post in catlist.posts %}
-        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+        <div class="col-sm col-md-3 col-lg-3 ">
             <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80""
-                    class="card-img-top" alt="placeholder image">
+                <img width="400" height="300" class="card-img-top rounded"
+                    src="{% static 'images/deafult-pic-recipie.png' %}"
+                    alt="placeholder_image">
                 {% else %}
-                <img src="{{ post.featured_image.url }}"  alt="recipe image" class="card-img-top">
+                <img width="400" height="300" class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
                 {% endif %}
-                <div class="card-body pb-1">
-                    <a href="{% url 'post_detail' post.slug  %}">
-                        <h2 class="card-title">{{ post.title }}</h2>
-                    </a>
 
-                <p class="card-text">{{post.content|slice:":200" }} <a href="{% url 'post_detail' post.slug  %}"
-                        class="">... continue reading &rarr;</a></p>
-                <hr>
-                <p class="card-text text-muted ">
-                    <i class="far fa-thumbs-up"></i> {{ post.number_of_likes }} |
-                    {{ post.updated_on | naturaltime }} | <a
-                        href="/category/{{ post.category }}">{{ post.category|title }}</a>
-                </p>
-                </div>
+                <div class="card-body pb-1"> 
+                  <a href="{% url 'post_detail' post.slug  %}" class="post-link">         
+                  <h2 class="card-title recipe-detail-title text-truncate">{{ post.title }}</h2></a> 
+                <p class="author">Submitted by: {{ post.author }}
+         
+                  <!-- Only users that are logged in can edit/ delete their own post -->
+
+                  {% if user.id == post.author.id %}
+                  <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
+                  <button type="button" class="btn" data-bs-toggle="modal"
+                  data-bs-target="#delete-comment">Delete</button>
+                          <div class="modal fade" id="delete-comment"
+                            tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure you want to delete your post?
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary"
+                                          data-bs-dismiss="modal">Close</button>
+                                      <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger" aria-label="Delete Comment">Delete</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  {% endif %}
+              </p>
+              <p class="card-text text-muted ">
+                <i class="bi bi-suit-heart-fill"></i> {{ post.number_of_likes }} |
+                <a href="/category/{{ post.category }}">{{ post.category|title }}</a>
+             </p>
+              
             </div>
+        </div>
+      </div>
+      
+    </div>
         </div>
         {% empty %}
         <div class="col-lg-8">
+            <h2 class="text-center">Sorry, currently there are no posts in this category. 
+                <a class="hidden-link" href="{% url 'add_post' %}">Add one?</a></h2>
             <img class="card-img-top rounded"
                 src="{% static 'images/deafult-pic-recipie.png' %}"
                 alt="placeholder_image">
-            <h2 class="text-center">Sorry, currently there are no posts in this category. 
-                <a class="hidden-link" href="{% url 'add_post' %}">Add one?</a></h2>
+
         </div>
         {% endfor %}
     </div>
