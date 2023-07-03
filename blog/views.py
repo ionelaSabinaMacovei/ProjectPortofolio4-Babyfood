@@ -135,6 +135,7 @@ def add_post(request):
 def edit_post(request, slug):
 
     post = get_object_or_404(Post, slug=slug)
+    form = PostForm(request.POST, request.FILES, instance=post)
     if request.user.id == post.author.id:
         if request.method == 'POST':
             form = PostForm(request.POST, request.FILES, instance=post)
