@@ -59,6 +59,63 @@
     </section>
 </section>
 
+<div class="user-post-list mt-4">
+    <h4>My Post Lists</h4>
+    <div class="row card-deck">
+        {% for post in post_list %}
+        <div class="col-sm col-md-3 col-lg-3 ">
+            <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
+                {% if "placeholder" in post.featured_image.url %}
+                <img width="400" height="300" class="card-img-top rounded"
+                    src="{% static 'images/deafult-pic-recipie.png' %}"
+                    alt="placeholder_image">
+                {% else %}
+                <img width="400" height="300" class="card-img-top" src="{{ post.featured_image.url }}" alt="featured_image">
+                {% endif %}
+
+                <div class="card-body pb-1"> 
+                  <a href="{% url 'post_detail' post.slug  %}" class="post-link">         
+                  <h2 class="card-title recipe-detail-title text-truncate">{{ post.title }}</h2></a> 
+                <p class="author">Submitted by: {{ post.author }}
+         
+                  <!-- Only users that are logged in can edit/ delete their own post -->
+
+                  {% if user.id == post.author.id %}
+                  <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
+                  <button type="button" class="btn" data-bs-toggle="modal"
+                  data-bs-target="#delete-comment">Delete</button>
+                          <div class="modal fade" id="delete-comment"
+                            tabindex="-1" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      Are you sure you want to delete your post?
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary"
+                                          data-bs-dismiss="modal">Close</button>
+                                      <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger" aria-label="Delete Comment">Delete</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  {% endif %}
+              </p>
+              <p class="card-text text-muted ">
+                <i class="bi bi-suit-heart-fill"></i> {{ post.number_of_likes }} |
+                <a href="/category/{{ post.category }}">{{ post.category|title }}</a>
+             </p>
+              
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
 <!-- END OF PROFILE SECTION -->
 
 {% endblock content %}

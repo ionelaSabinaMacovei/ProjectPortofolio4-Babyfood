@@ -248,6 +248,7 @@ def profile_view(request):
     """
     Renders the profile page
     """
+    queryset = Post.objects.all()
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(
@@ -266,6 +267,11 @@ def profile_view(request):
         'profile_form': profile_form,
     }
     return render(request, 'profile.html', context)
+
+
+def get_queryset(self):
+    user = self.request.user
+    return Post.objects.filter(author=user)
 
 
 @login_required(login_url='sign_in')
