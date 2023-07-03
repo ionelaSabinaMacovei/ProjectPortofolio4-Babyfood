@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.urls import re_path as url
+from .views import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +24,5 @@ urlpatterns = [
     path('', include('blog.urls'), name='blog_urls'),
     path('accounts/', include('allauth.urls')),
 ]
+
+handler404 = 'babyfood.views.handler404'
