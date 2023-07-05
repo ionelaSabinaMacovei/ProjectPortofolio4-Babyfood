@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.text import slugify
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DetailView
 
 
 def about(request):
@@ -28,15 +28,20 @@ class PostList(generic.ListView):
     paginate_by = 8
 
 
-class PostDetail(View):
+class PostDetail(DetailView):
     """
     For displaying selected post's detail
     """
+    
+    model = Post
+
+    template_name = 'post_detail.html'
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by('created_on')
+        connected_comments = Comment.objects.filter(body=self.get_object())
         category = post.category
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
@@ -61,21 +66,28 @@ class PostDetail(View):
         """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        
+        comment_form = CommentForm(self.request.POST)
+        body = comment_form
+        parent = comment_form['parent']
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
         comments = post.comments.order_by('created_on')
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
-            comment_form.instance.name = request.user.username
-            comment = comment_form.save(commit=False)
-            comment.post = post
-            comment.save()
-        else:
-            comment_form = CommentForm()
-           
+        if self.request.method == 'POST':
+            
+            comment_form = CommentForm(self.request.POST)
+            if comment_form.is_valid():
+                print('form valid')
+                body = comment_form.cleaned_data['body']
+                try:
+                    parent = comment_form.cleaned_data['parent']
+                except:
+                    parent = None
+
+            new_comment = Comment(body=body, name=self.request.user, post=self.get_object(), parent=parent)
+            new_comment.save()
+            return redirect(self.request.path_info)
+
         return render(
             request,
             "post_detail.html",
@@ -85,6 +97,7 @@ class PostDetail(View):
                 "commented": True,
                 "liked": liked,
                 "comment_form": comment_form,
+                
             },
         )
 
