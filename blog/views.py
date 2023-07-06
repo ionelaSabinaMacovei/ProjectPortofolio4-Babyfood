@@ -118,10 +118,6 @@ class PostDetail(DetailView, FormView):
                 
             },
         )
-    
-    def get_success_url(self):
-        self.object = self.get_object()
-        return reverse_lazy('post_detail', self.object.slug)
 
     def form_valid(self, form):
         self.object = self.get_object()
@@ -278,12 +274,14 @@ def post_search(request):
 
 
 @login_required
-def delete_comment(request, pk):
+def delete_comment(request, comment_id):
     """ Delete a comment in the blog
     """
-    Comment.objects.get(pk=pk).delete()
-    messages.success(request, 'The comment was deleted successfully!')
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.delete()
+    messages.success(request, 'The comment was deleted successfully')
+    return HttpResponseRedirect(reverse(
+        'post_detail', args=[comment.post.slug]))
 
 
 class edit_comment(SuccessMessageMixin, UpdateView):
@@ -294,7 +292,7 @@ class edit_comment(SuccessMessageMixin, UpdateView):
     template_name = 'edit_comment.html'
     form_class = CommentForm
     success_message = 'The comment was successfully updated'
-
+    
 
 @login_required
 def profile_view(request):

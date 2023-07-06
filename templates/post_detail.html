@@ -95,8 +95,7 @@
 
  <!-- Comments section -->
 <section >
-    <h2 class="mb-4 mt-5 font-weight-bold" style="color:#ff5722;">Questions And Queries</h2>
-    <h4 class="mt-2 font-weight-bold" style="color:#ff5722;">Post your comment or question below:</h4>
+    <h2 class="mt-2 font-weight-bold" style="color:#ff5722;">Post your comment below:</h2>
     <br><br>
     <div class="container row">
       <div class="col-md-6">
@@ -113,16 +112,45 @@
     <div class="row">
       {% for comment in comments.all %}
       <div class="col-md-8 mt-2 mb-2">
+        {% if user.is_authenticated %}
+
                       <div class="media border p-3">
                          
                           <div class="media-body">
                                     <h4>{{comment.author}} <small><i>Posted on {{comment.created_on}}</i></small></h4>
                                     <p>{{comment.body}}</p>
+                                    
+                                {% if user.is_authenticated and user.username == comment.author or user.is_superuser %}
+                                <a href="{% url 'edit_comment' comment.id %}" class="btn-edit btn-sm btn-secondary mb-3" aria-label="Go to the Edit Comments Page">Edit
+                                    
+                                </a>
+                                <button type="button" class="btn-delete btn-sm btn-danger mb-3" data-bs-toggle="modal"
+                                    data-bs-target="#delete-comment">Delete</button>
+                                <!-- Delete comment bootstrap modal-->
+                                <div class="modal fade" id="delete-comment"
+                                    tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Delete Comment</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete your comment?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger" aria-label="Delete Comment">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
                             {% for reply in comment.replies.all %}
                                         <div class="media p-3">
                                                 
                                         <div class="media-body">
-                                                <h5>{{reply.author}} <small><i>Posted on {{reply.date_added}}</i></small></h5>
+                                                <h5>{{reply.author}} <small><i>Replied on {{reply.date_added}}</i></small></h5>
                                                 <p>{{reply.reply_body}}</p>
                                           </div>
                                         </div>
@@ -137,6 +165,7 @@
                             </form>
                           </div>
                   </div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>

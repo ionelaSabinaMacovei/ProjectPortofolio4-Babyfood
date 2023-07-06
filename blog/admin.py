@@ -43,4 +43,13 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user',)
 
 
+@admin.register(Reply)
+class ReplyAdmin(admin.ModelAdmin):
+    """
+    Add field for comment in admin panel
+    """
+    list_display = ('author', 'reply_body', 'date_added')
+    search_fields = ('author', 'reply_body')
+
+
 
