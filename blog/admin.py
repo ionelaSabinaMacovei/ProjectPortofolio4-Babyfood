@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Category, Profile
+from .models import Post, Comment, Category, Profile, Reply
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -20,9 +20,9 @@ class CommentAdmin(admin.ModelAdmin):
     """
     Add field for comment in admin panel
     """
-    list_display = ('name', 'body', 'post', 'created_on', 'updated_on')
+    list_display = ('author', 'body', 'post', 'created_on', 'updated_on')
     list_filter = ('updated_on', 'created_on')
-    search_fields = ('name', 'email', 'body')
+    search_fields = ('author', 'email', 'body')
 
 
 @admin.register(Category)
@@ -41,3 +41,6 @@ class ProfileAdmin(admin.ModelAdmin):
     Add field for the profile in the admin panel
     """
     list_display = ('user',)
+
+
+

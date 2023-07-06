@@ -1,14 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from .models import Post, Comment, Category, Profile
-from .forms import CommentForm, PostForm, PostSearchForm, ProfileUpdateForm, UserUpdateForm
+from .forms import CommentForm, PostForm, PostSearchForm, ProfileUpdateForm, UserUpdateForm, ReplyForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.text import slugify
-from django.views.generic import UpdateView, DetailView
+from django.views.generic import UpdateView, DetailView, ListView, FormView
+from django.urls import reverse_lazy
 
 
 def about(request):
@@ -28,25 +29,34 @@ class PostList(generic.ListView):
     paginate_by = 8
 
 
-class PostDetail(DetailView):
+class PostDetail(DetailView, FormView):
     """
     For displaying selected post's detail
     """
-    
     model = Post
-
     template_name = 'post_detail.html'
+    form_class = CommentForm
+    second_form_class = ReplyForm
 
-    def get(self, request, slug, *args, **kwargs):
+    def get_context_data(self,  **kwargs):
         queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
+        post = self.object
         comments = post.comments.order_by('created_on')
-        connected_comments = Comment.objects.filter(body=self.get_object())
+        
         category = post.category
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+
+        context = super(PostDetail, self).get_context_data(**kwargs)
+        if 'form' not in context:
+            context['form'] = self.form_class(request=self.request)
+        if 'form2' not in context:
+            context['form2'] = self.second_form_class(request=self.request)
         
+        context['comments'] = post.comments
+        return context
+
         return render(
             request,
             "post_detail.html",
@@ -56,7 +66,8 @@ class PostDetail(DetailView):
                 "commented": False,
                 "liked": liked,
                 "category": category,
-                "comment_form": CommentForm()
+                "form_class": CommentForm(),
+                "second_form_class": ReplyForm(),
             },
         )
 
@@ -66,27 +77,33 @@ class PostDetail(DetailView):
         """
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
-        comment_form = CommentForm(self.request.POST)
-        body = comment_form
-        parent = comment_form['parent']
+        comments = post.comments.order_by('created_on')
+        form_class = CommentForm
+        second_form_class = ReplyForm
+        
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
-        comments = post.comments.order_by('created_on')
-        if self.request.method == 'POST':
-            
-            comment_form = CommentForm(self.request.POST)
-            if comment_form.is_valid():
-                print('form valid')
-                body = comment_form.cleaned_data['body']
-                try:
-                    parent = comment_form.cleaned_data['parent']
-                except:
-                    parent = None
 
-            new_comment = Comment(body=body, name=self.request.user, post=self.get_object(), parent=parent)
-            new_comment.save()
-            return redirect(self.request.path_info)
+        self.object = self.get_object()
+        if 'form' in request.POST:
+            form_class = self.get_form_class()
+            form_name = 'form'
+        else:
+            form_class = self.second_form_class
+            form_name = 'form2'
+
+        form = self.get_form(form_class)
+        # print("the form name is : ", form)
+        # print("form name: ", form_name)
+        # print("form_class:",form_class)
+
+        if form_name == 'form' and form.is_valid():
+            print("comment form is returned")
+            return self.form_valid(form)
+        elif form_name == 'form2' and form.is_valid():
+            print("reply form is returned")
+            return self.form2_valid(form)
 
         return render(
             request,
@@ -96,11 +113,34 @@ class PostDetail(DetailView):
                 "comments": comments,
                 "commented": True,
                 "liked": liked,
-                "comment_form": comment_form,
+                "form_class": CommentForm(),
+                "second_form_class": ReplyForm(),
                 
             },
         )
+    
+    def get_success_url(self):
+        self.object = self.get_object()
+        return reverse_lazy('post_detail', self.object.slug)
 
+    def form_valid(self, form):
+        self.object = self.get_object()
+        fm = form.save(commit=False)
+        fm.author = self.request.user
+        fm.post = self.object.comments.name
+        fm.post_id = self.object.id
+        fm.save()
+        print("reply form is returned")
+        return redirect(reverse('post_detail', kwargs={"slug": self.object.slug}))
+
+    def form2_valid(self, form):
+        self.object = self.get_object()
+        fm = form.save(commit=False)
+        fm.author = self.request.user
+        fm.comment_name_id = self.request.POST.get('comment.id')
+        fm.save()
+        return redirect(reverse('post_detail', kwargs={"slug": self.object.slug}))
+        
 
 class PostLike(View):
     """

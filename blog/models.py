@@ -4,6 +4,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.urls import reverse
+from django.template.defaultfilters import slugify
+import os
 
 STATUS = ((0, "Draft"), (1, "Published"))
 User = get_user_model()
@@ -81,31 +83,30 @@ class Comment(models.Model):
     """
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
                              related_name="comments")
-    name = models.CharField(max_length=80)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)                 
+    comm_name = models.CharField(max_length=100, blank=True)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE , related_name='replies')
-    
-    class Meta:
-        ordering = ["created_on"]
+   
+    def save(self, *args, **kwargs):
+        self.comm_name = slugify("Comment by" + "-" + str(self.author) + str(self.created_on))
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
-    
-    @property
-    def children(self):
-        return Comment.objects.filter(parent=self).reverse()
+        return self.comm_name
 
-    @property
-    def is_parent(self):
-        if self.parent is None:
-            return True
-        return False
+    class Meta:
+        ordering = ["-created_on"]
 
-    def get_absolute_url(self):
-        """Sets absolute URL"""
-        return reverse('post_detail', args=[self.post.slug])
 
+class Reply(models.Model):
+    comment_name = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='replies')
+    reply_body = models.TextField(max_length=500)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "Reply to " + str(self.comment_name.name)
 
