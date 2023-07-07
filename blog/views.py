@@ -275,7 +275,8 @@ def post_search(request):
 
 @login_required
 def delete_comment(request, comment_id):
-    """ Delete a comment in the blog
+    """
+    Delete comment
     """
     comment = get_object_or_404(Comment, id=comment_id)
     comment.delete()
