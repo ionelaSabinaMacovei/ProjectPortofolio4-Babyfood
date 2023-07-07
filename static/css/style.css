@@ -379,6 +379,13 @@ background: transparent;
 
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-top: 10px;
+}
+
 .title {
     font-style: normal;
     text-transform: uppercase;
