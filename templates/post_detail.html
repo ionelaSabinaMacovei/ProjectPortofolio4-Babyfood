@@ -94,6 +94,7 @@
     </div>
 
  <!-- Comments section -->
+ {% if user.is_authenticated %}
 <section >
     <h2 class="mt-2 font-weight-bold" style="color:#ff5722;">Post your comment below:</h2>
     <br><br>
@@ -109,10 +110,11 @@
 
       </div>
     </div>
+{% endif %}
     <div class="row">
     {% for comment in comments.all %}
     <div class="col-md-8 mt-2 mb-2">
-    {% if user.is_authenticated %}
+    
     <div class="media-body">
         <h4>{{comment.author}} <small><i>Posted on {{comment.created_on}}</i></small></h4>
         <p>{{comment.body}}</p>
@@ -160,7 +162,7 @@
                             </form>
                           
                   </div>
-        {% endif %}
+        
       </div>
       {% endfor %}
     </div>
