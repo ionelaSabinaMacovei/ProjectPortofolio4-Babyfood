@@ -95,76 +95,87 @@
 
  <!-- Comments section -->
  {% if user.is_authenticated %}
-<section >
-    <h2 class="mt-2 font-weight-bold" style="color:#ff5722;">Post your comment below:</h2>
-    <br><br>
-    <div class="container row">
-      <div class="col-md-6">
-                              <form method="post">
-                                    <div class="form-group">
-                                    {% csrf_token %}
-                                    {{form|crispy}}
-                                    <input type="submit" name="form" value="Add Comment" class="btn btn-primary btn-sm">
-                                    </div>
-                              </form>
 
-      </div>
-    </div>
-{% endif %}
-    <div class="row">
-    {% for comment in comments.all %}
-    <div class="col-md-8 mt-2 mb-2">
-    
-    <div class="media-body">
-        <h4>{{comment.author}} <small><i>Posted on {{comment.created_on}}</i></small></h4>
-        <p>{{comment.body}}</p>
-    </div>
-    {% if user.is_authenticated and user.username == comment.author or user.is_superuser %}
-    <a href="{% url 'edit_comment' comment.id %}" class="btn-edit btn-sm btn-secondary mb-3" aria-label="Go to the Edit Comments Page">Edit</a>
-    <button type="button" class="btn-delete btn-sm btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#delete-comment-{{ comment.pk }}">Delete</button>
-        <!-- Delete comment bootstrap modal-->
-        <div class="modal fade" id="delete-comment-{{ comment.pk }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Delete Comment</h5>
-                    </div>
-                    <div class="modal-body">
-                         Are you sure you want to delete your comment?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Close</button>
-                        <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger" aria-label="Delete Comment">Delete</a>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="mt-2 font-weight-bold" style="color:#000000;">Post your comment below:</h2>
+                        <br><br>
+                        <div >
+                        <div  class="addcomm">
+                                                <form method="post">
+                                                        <div class="form-group">
+                                                        {% csrf_token %}
+                                                        {{form|crispy}}
+                                                        <input type="submit" name="form" value="Add Comment" class="btn btn-primary btn-sm" >
+                                                        </div>
+                                                </form>
+
+                        </div>
+                        </div>
+                    {% endif %}
+                        <div >
+                        {% for comment in comments.all %}
+                        <div >
+                        
+                        <div class="media-body">
+                            <h4>{{comment.author}} <small><i>Posted on {{comment.created_on}}</i></small></h4>
+                            <p>{{comment.body}}</p>
+                        </div>
+                        {% if user.is_authenticated and user.username == comment.author or user.is_superuser %}
+                        <a href="{% url 'edit_comment' comment.id %}" class="btn-edit btn-sm btn-secondary mb-3" aria-label="Go to the Edit Comments Page">Edit</a>
+                        <button type="button" class="btn-delete btn-sm btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#delete-comment-{{ comment.pk }}">Delete</button>
+                            <!-- Delete comment bootstrap modal-->
+                            <div class="modal fade" id="delete-comment-{{ comment.pk }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Delete Comment</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete your comment?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <a href="{% url 'delete_comment' comment.id %}" class="btn btn-danger" aria-label="Delete Comment">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                                        <div>
+                                            
+                                                {% for reply in comment.replies.all %}
+                                                            <div class="media p-3">
+                                                                    
+                                                            <div class="media-body">
+                                                                    <h5>{{reply.author}} <small><i>Replied on {{reply.date_added}}</i></small></h5>
+                                                                    <p>{{reply.reply_body}}</p>
+                                                            </div>
+                                                            </div>
+                                                {% endfor %}
+                                                <!-- form to post reply -->
+                                                <form method="post">
+                                                    <input type="hidden" name="comment.id" value="{{comment.id}}">
+                                                    <input type="hidden" name="comment.comm_name" value="{{comment.comm_name}}">
+                                                    {% csrf_token %}
+                                                    {{form2.as_p}}
+                                                    <input type="submit" name="form2" value="Add Reply" class="btn btn-warning btn-sm">
+                                                </form>
+                                            
+                                    </div>
+                            
+                        </div>
+                        {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        {% endif %}
-                      <div class="media border p-3">
-                         
-                            {% for reply in comment.replies.all %}
-                                        <div class="media p-3">
-                                                
-                                        <div class="media-body">
-                                                <h5>{{reply.author}} <small><i>Replied on {{reply.date_added}}</i></small></h5>
-                                                <p>{{reply.reply_body}}</p>
-                                          </div>
-                                        </div>
-                            {% endfor %}
-                            <!-- form to post reply -->
-                            <form method="post">
-                                  <input type="hidden" name="comment.id" value="{{comment.id}}">
-                                  <input type="hidden" name="comment.comm_name" value="{{comment.comm_name}}">
-                                  {% csrf_token %}
-                                  {{form2.as_p}}
-                                  <input type="submit" name="form2" value="Add Reply" class="btn btn-warning btn-sm">
-                            </form>
-                          
-                  </div>
-        
-      </div>
-      {% endfor %}
     </div>
 
 

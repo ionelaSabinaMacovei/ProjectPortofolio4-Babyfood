@@ -133,8 +133,8 @@
                   {% if user.id == post.author.id %}
                   <small><a href="{% url 'edit_post' post.slug %}"> Edit</a></small> |
                   <button type="button" class="btn" data-bs-toggle="modal"
-                  data-bs-target="#delete-comment">Delete</button>
-                          <div class="modal fade" id="delete-comment"
+                  data-bs-target="#delete-post">Delete</button>
+                          <div class="modal fade" id="delete-post"
                             tabindex="-1" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
