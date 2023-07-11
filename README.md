@@ -30,9 +30,8 @@ README Table Content
     - [Post Detail Page - Comments](#post-detail-page---comments)
     - [Edit Comments Page](#edit-comments-page)
     - [Categories Page](#categories-page)
-    - [Categories Results](#categories-results)
     - [Books Page](#books-page)
-    - [Add/Edit Books Page](#addedit-books-page)
+    - [Add/Edit Recipie Page](#addedit-recipie-page)
     - [Search Box](#search-box)
     - [Search Results Page](#search-results-page)
     - [Search Results - Input Empty](#search-results---input-empty)
@@ -192,39 +191,28 @@ superuser they have access to the buttons for deleting or updating comments. Als
 
 ### Categories Page
 
-![Categories Page ](./assets/readme/features/tasty_blog_categories_page.jpg)<br><br>
+![Categories Page ](static/extras/features/category-page.png)<br><br>
 
-* On the Categories Page, users can see the categories available in the blog and filter the posts by category.
+* On the Categories Page, users can access the post filtered by the chosen category.
 
-### Categories Results
+### Add/Edit Recipie Page
 
-![Categories Results Page](./assets/readme/features/tasty_blog_categories_results_page.jpg)
+![Add Recipie Page](static/extras/features/add-post.png)
 
-* On the Categories Results Page, users can access the post filtered by the chosen category.
-  
-### Books Page
+![Edit Recipie Page](static/extras/features/edit-post.png)
 
-![Books Page](./assets/readme/features/tasty_blog_books_page.jpg)
-
-* On this page, registered users can see favourite books posted by other users. If they had already published 
-  a post they are allowed to edit or delete their own posts
-
-### Add/Edit Books Page
-
-![Add/Edit Book Page](./assets/readme/features/tasty_blog_add_book_page.jpg)
-
-On this page, registered users can fill out the form to add or edit a post with their favourite cookbooks.
+On this page, registered users can fill out the form to add or edit a post with their favourite recipie.
 
 ### Search Box
 
-![Search Box](./assets/readme/features/tasty_blog_search_page.jpg)
+![Search Box](static/extras/features/search-box.png)
 
 * In this box, the users can search by inputting a keyword in the search tool. This allows the user to try and find 
   the recipe they are looking for.
 
 ### Search Results Page
 
-![Search Results Page](./assets/readme/features/tasty_blog_search_results_page.jpg)
+![Search Results Page](static/extras/features/search-result.png)
 
 * On the Search Results Page, users can see the recipes found by their search.  When their recipe is located, the user can go to the 
   Post Details Page by clicking on the card result.
