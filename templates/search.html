@@ -78,6 +78,15 @@
                     <a class="hidden-link" href="{% url 'add_post' %}">Add one?</a></h2>
             </div>
             {% endfor %}
+            {% else %}
+            <div class="results-empty">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>You forgot to search for a recipe. <br>Please try searching again.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
 
             {% endif %}
         </div>
