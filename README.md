@@ -56,14 +56,10 @@ README Table Content
     - [Delete Comment - 1](#delete-comment---1)
     - [Delete Comment - 2](#delete-comment---2)
     - [Edit Comment](#edit-comment)
-    - [Email Sent - Success](#email-sent---success)
-    - [Email Sent - Failed](#email-sent---failed)
-    - [Add Book](#add-book)
-    - [Edit Book](#edit-book)
-    - [Delete Book 1](#delete-book-1)
-    - [Delete Book 2](#delete-book-2)
-    - [Empty Search](#empty-search)
-    - [No Search Found](#no-search-found)
+    - [Add Post](#add-post)
+    - [Edit Post](#edit-post)
+    - [Delete Post 1](#delete-post-1)
+    - [Delete Post 2](#delete-post-2)
   - [Admin Panel/Superuser](#admin-panelsuperuser)
   - [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
@@ -326,44 +322,30 @@ user's experience.
 
 ### Delete/Edit Comment
 
-![Delete Comment](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_comment_delete_1.jpg)
+![Delete Comment](static/extras/features/edit-delete-comment.png)
 
 * When users are logged in to the website and they have previously posted a comment or if the user is a superuser they will see the 
 Delete and Edit buttons at the bottom of comments.<br>
 
 ### Delete Comment - 1
 
-![Delete Comment - 2](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_comment_delete_2.jpg)
+![Delete Comment - 2](static/extras/features/dellete-comment-modal.png)
 
 * If they wish to delete their comment, they can press the button Delete and a Bootstrap box model will pop up with the message 
   "Are you sure you want to delete your comment?".<br>
 
 ### Delete Comment - 2
 
-![Delete Comment - 3](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_comment_delete_3.jpg)
+![Delete Comment - 3](static/extras/features/dellete-comment-message.png)
 
 * After pressing the Delete button again inside the Bootstrap box model they will see a message on the 
   top of the page, "Your comment was deleted successfully".<br>
 
 ### Edit Comment
 
-![Edit Comment](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_comment_edit.jpg)
+![Edit Comment](static/extras/features/edit-comment-message.png)
 
 * After pressing the Update, users will see a message on the top of the page, "The comment was successfully updated".<br>
-
-### Email Sent - Success
-
-![Email Sent - Success](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_email_sent_2.jpg)
-
-* After users submit the form to info@tastyblog successfully, they will see the message, "Thanks for your email! 
-  We will contact you as soon as possible".<br>
-
-### Email Sent - Failed
-
-![Email Sent - Failed](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_email_sent.jpg)
-
-* If the email was not submitted successfully, users will see the message, "Sorry, something went wrong! 
-  Try to submit the email again".<br>
 
 ### Add Book
 

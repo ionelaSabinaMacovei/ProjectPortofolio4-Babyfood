@@ -164,7 +164,7 @@ def add_post(request):
             post.author = request.user
             post.slug = slugify(post.title)
             form.save()
-            messages.success(request, 'Successfully added post for review.')
+            messages.success(request, 'Successfully added post.')
             return redirect(reverse('home'))
         else:
             messages.error(request, 'Failed to add post. \
