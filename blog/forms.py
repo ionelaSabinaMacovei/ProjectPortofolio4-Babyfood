@@ -14,7 +14,9 @@ class CommentForm(forms.ModelForm):
         labels = {"body": "Comment:"}
 
         widgets = {
-            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 70, 'placeholder': "Enter Your Comment"}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 4,
+                                   'cols': 70, 'placeholder':
+                                          "Enter Your Comment"}),
         }
 
 
@@ -24,7 +26,8 @@ class ReplyForm(forms.ModelForm):
         fields = ('reply_body',)
 
         widgets = {
-            'reply_body': forms.Textarea(attrs={'class': 'form-control', 'rows': 2, 'cols': 10}),
+            'reply_body': forms.Textarea(attrs={'class': 'form-control',
+                                                'rows': 2, 'cols': 10}),
         }
 
     def __init__(self, *args, **kwargs):

@@ -66,7 +66,6 @@ README Table Content
       - [Django Packages](#django-packages)
     - [Frameworks - Libraries - Programs Used](#frameworks---libraries---programs-used)
     - [Testing](#testing)
-  - [Creating the Django app](#creating-the-django-app)
   - [Deployment of This Project](#deployment-of-this-project)
   - [Final Deployment](#final-deployment)
   - [Forking This Project](#forking-this-project)
@@ -347,55 +346,178 @@ Delete and Edit buttons at the bottom of comments.<br>
 
 * After pressing the Update, users will see a message on the top of the page, "The comment was successfully updated".<br>
 
-### Add Book
+### Add Post
 
-![Add Book](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_add_book.jpg)  
+![Add Post](static/extras/features/add-post-message.png)  
 
-* When users are logged in to the website they can publish a post with a favourite cookbook and after they submit the 
-post they will see a message at the top of the page saying "Your post was sent successfully and is awaiting approval".<br>
+* When users are logged in to the website they can publish a post with a favourite baby recipie and after they submit the 
+post they will see a message at the top of the page saying "Successfully added post".<br>
 
-### Edit Book
+### Edit Post
 
-![Edit Book](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_book_edit.jpg)  
+![Edit Post](static/extras/features/addpost-update-message.png)  
 * When users are logged in to the website they can edit their own previously published posts and they will see the message 
-  "The post was successfully updated" after pressing the Submit button.<br>
+  "Successfully updated post" after pressing the Submit button.<br>
 
-### Delete Book 1 
+### Delete Post 1 
 
-![Delete Book 1](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_book_delete_2.jpg)
+![Delete Post 1](static/extras/features/dellete-post-modal.png)
 When users are logged in to the website and they wish to delete their posts, they can press the button Delete and a 
 Bootstrap box model will pop up with the message "Are you sure you want to delete your post?".<br>  
 
-### Delete Book 2
+### Delete Post 2
 
-![Delete Book 2](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_book_delete.jpg)  
+![Delete Post 2](static/extras/features/dellete-post-message.png)  
 
 * After pressing the Delete button again inside the Bootstrap box model they will see a message on the 
-  top of the page, "Your post was deleted successfully".<br>
-
-### Empty Search
-
-![Empty Search](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_profile_empty_search.jpg)
-
-* Any user can search for a keyword using the input search and if the search is done with an empty input they will see a
-  message saying, "You forgot to search a recipe. Please try searching again.".<br>
-
-### No Search Found
-
-![No Search Found](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_profile_no_search_found.jpg)
-
-* And if there are no results matching or similar to the keyword, the user will see the following message, "We are sorry. 
-  There are no searches for (keyword) on the website. Try the search again".<br>
+  top of the page, "Post deleted!".<br>
 
 ## Admin Panel/Superuser
-![No Search Found](./assets/readme/extras/tasty_blog_superuser.jpg)
+![No Search Found](static/extras/features/admin-pannel.png)
 
 * On the Admin Panel, as an admin/superuser I have full access to CRUD functionality so I can view, create, edit and
 delete the following ones:
 1. Posts
 2. Comments
-3. Author
-4. Categories
-5. Profiles
-6. Books
+3. Categories
+4. Profiles
 
+## Technologies Used
+
+### Languages Used
+
+* [HTML 5](https://en.wikipedia.org/wiki/HTML/)
+* [CSS 3](https://en.wikipedia.org/wiki/CSS)
+* [JavaScript](https://www.javascript.com/)
+* [Django](https://www.python.org/)
+* [Python](https://www.djangoproject.com/)
+
+#### Django Packages
+
+* [Gunicorn](https://gunicorn.org/)<br>
+   As the server for Heroku
+* [Cloudinary](https://cloudinary.com/)<br>
+   Was used to host the static files and media
+* [Dj_database_url](https://pypi.org/project/dj-database-url/)<br>
+   To parse the database URL from the environment variables in Heroku
+* [Psycopg2](https://pypi.org/project/psycopg2/)<br>
+   As an adaptor for Python and PostgreSQL databases
+* [Summernote](https://summernote.org/)<br>
+   As a text editor
+* [Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html)<br>
+   For authentication, registration, account
+   management
+* [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)<br>
+   To style the forms
+
+### Frameworks - Libraries - Programs Used
+
+* [Bootstrap](https://getbootstrap.com/)<br>
+   Was used to style the website, add responsiveness and interactivity
+* [Jquery](https://jquery.com/)<br>
+   All the scripts were written using jquery library
+* [Gitpod](https://gitpod.io/)
+	 Gitpod is used as version control software to commit and push code to the GitHub repository where the source code is stored.
+* [GitHub](https://github.com/)<br>
+   GitHub is used to store the project's code after being pushed from Git
+* [Heroku](https://id.heroku.com)<br>
+   Heroku was used to deploy the live project
+* [PostgreSQL](https://www.postgresql.org/)<br>
+   Database used through heroku.
+* [Lucidchart](https://lucid.app/)<br>
+   Lucidchart was used to create the database diagram
+* [PEP8](http://pep8online.com/)<br>
+   PEP8 was used to validate all the Python code
+* [W3C - HTML](https://validator.w3.org/)<br>
+   W3C- HTML was used to validate all the HTML code
+* [W3C - CSS](https://jigsaw.w3.org/css-validator/)<br>
+   W3C - CSS was used to validate the CSS code
+* [Fontawesome](https://fontawesome.com/)<br>
+   To add icons to the website
+* [Google Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)<br>
+   To check App responsiveness and debugging
+* [Google Fonts](https://fonts.google.com/)<br>
+   To add the fonts that were used throughout the project
+* [Balsamiq](https://balsamiq.com/)<br>
+   To build the wireframes for the project
+* [CANVA](https://www.canva.com/)<br>
+   To build the logos for the project
+* [Coolors](https://coolors.co/)<br>
+   To build the colour palette of the project
+* [Favicon](https://favicon.io/)
+   Favicon.io was used to make the site favicon 
+* [Am I Responsive](http://ami.responsivedesign.is/#)
+   Multi Device Website Mockup Generator was used to create the Mock up image in this README
+
+### Testing
+
+Testing results [here](TESTING.md)
+
+## Deployment of This Project
+
+* This site was deployed by completing the following steps:
+
+1. Log in to [Heroku](https://id.heroku.com) or create an account
+2. On the main page click the button labelled New in the top right corner and from the drop-down menu select Create New
+App
+3. You must enter a unique app name
+4. Next select your region
+5. Click on the Create App button
+6. Click in resources and select Heroku Postgres database
+7. Click Reveal Config Vars and add a new record with SECRET_KEY
+8. Click Reveal Config Vars and add a new record with the `CLOUDINARY_URL`
+9. Click Reveal Config Vars and add a new record with the `DISABLE_COLLECTSTATIC = 1`
+10. The next page is the project’s Deploy Tab. Click on the Settings Tab and scroll down to Config Vars
+11. Next, scroll down to the Buildpack section click Add Buildpack select python and click Save Changes
+12. Scroll to the top of the page and choose the Deploy tab
+13. Select Github as the deployment method
+14. Confirm you want to connect to GitHub
+15. Search for the repository name and click the connect button
+16. Scroll to the bottom of the deploy page and select the preferred deployment type
+17. Click either Enable Automatic Deploys for automatic deployment when you push updates to Github
+
+## Final Deployment 
+
+1. Create a Procfile `web: gunicorn your_project_name.wsgi`
+2. When development is complete change the debug setting to: `DEBUG = False` in settings.py
+3. In this project the summernote editor was used so for this to work in Heroku add: `X_FRAME_OPTIONS = SAMEORIGIN `to
+   settings.py.
+4. In Heroku settings, delete the config vars for `DISABLE_COLLECTSTATIC = 1`
+5. In Heroku, once all the variables are in place, locate 'Manual Deploy' > choose the master branch and click 'Deploy Branch'.
+6. Once the app is built (it may take a few minutes), click 'Open App' from the top of the page.
+
+## Forking This Project
+
+* Fork this project by following the steps:
+
+1. Open [GitHub](https://github.com/ionelaSabinaMacovei/ProjectPortofolio4-Babyfood)
+2. Find the 'Fork' button at the top right of the page
+3. Once you click the button the fork will be in your repository
+
+## Cloning This Project
+
+* Clone this project by following the steps:
+
+1. Open [GitHub](https://github.com/ionelaSabinaMacovei/ProjectPortofolio4-Babyfood)
+2. You will be provided with three options to choose from, HTTPS, SSH or GitHub CLI, click the clipboard icon in order
+to copy the URL
+3. Once you click the button the fork will be in your repository
+4. Open a new terminal
+5. Change the current working directory to the location that you want the cloned directory
+6. Type 'git clone' and paste the URL copied in step 3
+7. Press 'Enter' and the project is cloned
+
+## Credits
+
+### Content
+
+* All food recipes were taken from [BBC Goodfood](https://www.bbcgoodfood.com/recipes)
+* The cookbook’s information and images were sourced from [Eason’s](https://www.easons.com/)
+* The images were taken from [Unsplash](https://unsplash.com/)
+* The Tasty Blog logos and favicon are my own design and build
+
+### Information Sources / Resources
+
+* [W3Schools - Python](https://www.w3schools.com/python/)
+* [Stack Overflow](https://stackoverflow.com/)
+* [Scrimba - Pyhton](https://scrimba.com/learn/python)

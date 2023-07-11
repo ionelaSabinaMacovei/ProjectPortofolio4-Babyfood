@@ -42,7 +42,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.cat_title
-    
+
 
 class Post(models.Model):
     """
@@ -51,7 +51,8 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, null=True, blank=True, on_delete=models.CASCADE, related_name="blog_posts"
+        User, null=True, blank=True, on_delete=models.CASCADE,
+        related_name="blog_posts"
     )
     featured_image = CloudinaryField('image', default='placeholder')
     ingredients = models.TextField()
@@ -83,15 +84,16 @@ class Comment(models.Model):
     """
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
                              related_name="comments")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)                 
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     comm_name = models.CharField(max_length=100, blank=True)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-   
+
     def save(self, *args, **kwargs):
-        self.comm_name = slugify("Comment by" + "-" + str(self.author) + str(self.created_on))
+        self.comm_name = slugify("Comment by" + "-" + str(self.author) +
+                                 str(self.created_on))
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -106,11 +108,11 @@ class Comment(models.Model):
 
 
 class Reply(models.Model):
-    comment_name = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='replies')
+    comment_name = models.ForeignKey(Comment, on_delete=models.CASCADE,
+                                     related_name='replies')
     reply_body = models.TextField(max_length=500)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return "Reply to " + str(self.comment_name.name)
-

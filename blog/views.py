@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from .models import Post, Comment, Category, Profile
-from .forms import CommentForm, PostForm, PostSearchForm, ProfileUpdateForm, UserUpdateForm, ReplyForm
+from .forms import (CommentForm, PostForm, PostSearchForm, ProfileUpdateForm,
+                    UserUpdateForm, ReplyForm)
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import HttpResponseRedirect
@@ -42,7 +43,7 @@ class PostDetail(DetailView, FormView):
         queryset = Post.objects.filter(status=1)
         post = self.object
         comments = post.comments.order_by('created_on')
-        
+
         category = post.category
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
@@ -53,7 +54,7 @@ class PostDetail(DetailView, FormView):
             context['form'] = self.form_class(request=self.request)
         if 'form2' not in context:
             context['form2'] = self.second_form_class(request=self.request)
-        
+
         context['comments'] = post.comments
         return context
 
@@ -80,7 +81,7 @@ class PostDetail(DetailView, FormView):
         comments = post.comments.order_by('created_on')
         form_class = CommentForm
         second_form_class = ReplyForm
-        
+
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -115,8 +116,7 @@ class PostDetail(DetailView, FormView):
                 "liked": liked,
                 "form_class": CommentForm(),
                 "second_form_class": ReplyForm(),
-                
-            },
+                },
         )
 
     def form_valid(self, form):
@@ -127,7 +127,8 @@ class PostDetail(DetailView, FormView):
         fm.post_id = self.object.id
         fm.save()
         print("reply form is returned")
-        return redirect(reverse('post_detail', kwargs={"slug": self.object.slug}))
+        return redirect(reverse('post_detail',
+                        kwargs={"slug": self.object.slug}))
 
     def form2_valid(self, form):
         self.object = self.get_object()
@@ -135,8 +136,9 @@ class PostDetail(DetailView, FormView):
         fm.author = self.request.user
         fm.comment_name_id = self.request.POST.get('comment.id')
         fm.save()
-        return redirect(reverse('post_detail', kwargs={"slug": self.object.slug}))
-        
+        return redirect(reverse('post_detail',
+                        kwargs={"slug": self.object.slug}))
+
 
 class PostLike(View):
     """
@@ -238,7 +240,8 @@ class CatListView(generic.ListView):
     def get_queryset(self):
         content = {
             'cat': self.kwargs['category'],
-            'posts': Post.objects.filter(category__cat_title=self.kwargs['category']).filter(status=1)
+            'posts': Post.objects.filter(
+                category__cat_title=self.kwargs['category']).filter(status=1)
         }
         return content
 
@@ -262,9 +265,9 @@ def post_search(request):
         form = PostSearchForm(request.GET)
         if form.is_valid():
             q = form.cleaned_data['q']
-            results = Post.objects.filter(Q
-                                          (title__icontains=q)
-                                          | Q(method__icontains=q)).filter(status=1)
+            results = Post.objects.filter
+            (Q(title__icontains=q)
+                | Q(method__icontains=q)).filter(status=1)
 
     return render(request, 'search.html', {
         'form': form,
@@ -293,7 +296,7 @@ class edit_comment(SuccessMessageMixin, UpdateView):
     template_name = 'edit_comment.html'
     form_class = CommentForm
     success_message = 'The comment was successfully updated'
-    
+
 
 @login_required
 def profile_view(request):
@@ -330,4 +333,3 @@ def delete_account(request):
         messages.success(request, 'Account Deleted!')
         return redirect('home')
     return render(request, 'delete_user.html')
-

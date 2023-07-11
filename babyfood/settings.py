@@ -22,7 +22,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/'8000-ionelasabin-projectport-ft3v676wtx2.ws-eu99.gitpod.io
+# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+# '8000-ionelasabin-projectport-ft3v676wtx2.ws-eu99.gitpod.io
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -31,7 +32,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost', '8000-ionelasabin-projectport-y54vzksfurp.ws-eu101.gitpod.io'  ]
+ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost',
+                 '8000-ionelasabin-projectport-y54vzksfurp.ws-eu101.gitpod.io']
 
 
 # Application definition
@@ -155,7 +157,6 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 
 
 # Default primary key field type

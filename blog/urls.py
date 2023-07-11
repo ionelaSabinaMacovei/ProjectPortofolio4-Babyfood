@@ -19,6 +19,4 @@ urlpatterns = [
     path('profile/', views.profile_view, name='profile'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('category/<category>/', views.CatListView.as_view(), name='category'),
-   
-    
 ]

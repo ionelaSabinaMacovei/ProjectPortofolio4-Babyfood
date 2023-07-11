@@ -10,4 +10,3 @@ class BlogConfig(AppConfig):
         Gets the user's details
         """
         import blog.signals
-

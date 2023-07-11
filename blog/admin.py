@@ -50,6 +50,3 @@ class ReplyAdmin(admin.ModelAdmin):
     """
     list_display = ('author', 'reply_body', 'date_added')
     search_fields = ('author', 'reply_body')
-
-
-
