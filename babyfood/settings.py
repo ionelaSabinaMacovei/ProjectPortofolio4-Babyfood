@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost', '8000-ionelasabin-projectport-x1u9dnu56a8.ws-eu101.gitpod.io'  ]
+ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost', '8000-ionelasabin-projectport-y54vzksfurp.ws-eu101.gitpod.io'  ]
 
 
 # Application definition

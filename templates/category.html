@@ -99,21 +99,20 @@
         </div>
 </section>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-12">
+<section class="py-5 vh-sm-80">
+  <div class="container">
+      <div class="row justify-content-center">
             <h1 class="page-title"><strong>Post Category: {{ catlist.cat|title }}</strong></h1>
-        </div>
-    </div>
+
     <hr class="home-break">
     <br>
     <!--  Recipe Cards -->
     
         {% for post in catlist.posts %}
-      <div class="row card-deck"></div>
-        <div class="col-12 ">
-            <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
+        <div class="col-lg-8">
+          <div class="card mb-4">
+              <div class="card-body">
+                <div class="image-container">
                 {% if "placeholder" in post.featured_image.url %}
                 <img width="400" height="400" class="card-img-top rounded"
                     src="{% static 'images/deafult-pic-recipie.png' %}"
@@ -175,7 +174,7 @@
         </div>
         {% endfor %}
     </div>
-</div>
+ </div>
 </section>
 
 {% endblock %}
