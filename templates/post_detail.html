@@ -126,7 +126,7 @@
                             <h4>{{comment.author}} <small><i>Posted on {{comment.created_on}}</i></small></h4>
                             <p>{{comment.body}}</p>
                         </div>
-                        {% if user.is_authenticated and user.username == comment.author or user.is_superuser %}
+                        {% if user.id == comment.author.id %}
                         <a href="{% url 'edit_comment' comment.id %}" class="btn-edit btn-sm btn-secondary " aria-label="Go to the Edit Comments Page">Edit</a>
                         <button type="button" class="btn-delete btn-sm btn-danger " data-bs-toggle="modal" data-bs-target="#delete-comment-{{ comment.pk }}">Delete</button>
                             <!-- Delete comment bootstrap modal-->

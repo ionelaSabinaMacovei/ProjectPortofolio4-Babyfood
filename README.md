@@ -41,6 +41,7 @@ README Table Content
     - [Logout Page](#logout-page)
     - [User Profile Page](#user-profile-page)
     - [Navbar](#navbar)
+    - [Herosection](#herosection)
     - [Footer](#footer)
   - [Messages and Interaction With Users](#messages-and-interaction-with-users)
     - [Sign up](#sign-up)
@@ -219,59 +220,65 @@ On this page, registered users can fill out the form to add or edit a post with 
 
 ### Search Results - Input Empty
 
-![Search Results - Input Empty](./assets/readme/features/tasty_blog_search_results_empty_page.jpg)
+![Search Results - Input Empty](static/extras/features/search-empty.png)
 
 * On the Search Results Page - Input Empty, users will see this message if their search returns with an empty input.
 
 ### Search Results - No Results Found
 
-![Search Results - No Results Found](./assets/readme/features/tasty_blog_search_results_null_page.jpg)
+![Search Results - No Results Found](static/extras/features/search-null.png)
 
 * On the Search Results Page - No Results Found, users will see this message if there is nothing found for the search.
 
 ### Signup Page
 
-![Signup Page](./assets/readme/features/tasty_blog_signup_page.jpg)
+![Signup Page](static/extras/features/signup-page.png)
 
-* On the Signup Page, a new user can sign up for the Tasty Blog website by filling out and then submitting the form.
+* On the Signup Page, a new user can sign up for the Babylicious Blog website by filling out and then submitting the form.
 
 ### Login Page
 
-![Login Page](./assets/readme/features/tasty_blog_login_page.jpg)
+![Login Page](static/extras/features/signin-page.png)
 
 * On the Login Page, users can log in to the website by inputting the username and password and have access 
   to website services for a user registered.
 
 ### Logout Page
 
-![Logout Page](./assets/readme/features/tasty_blog_logout_page.jpg)
+![Logout Page](static/extras/features/signout-page.png)
 
 * On the Logout Page, users can confirm that they wish to exit the website.
 
 ### User Profile Page
 
-![User Profile Page](./assets/readme/features/tasty_blog_user_profile_page.jpg)
+![User Profile Page](static/extras/features/profile-info.png)
 
-* On the Profile Page, users have access to their own information and can update their user name, email and profile image.
+![User Profile Page](static/extras/features/profile-info1.png)
+
+* On the Profile Page, users have access to their own information and can update their user name, email and profile image. Also they can see all their posts and they delete theit profile
 
 ### Navbar
 
-![Navbar](./assets/readme/features/tasty_blog_navbar.jpg)
+![Navbar](static/extras/features/navbar.png)
 
 * The navigation bar is present at the top of every page and houses all links to the various other pages.
 * The options to Register or Log in will change to the option to log out once a user has logged in.
-* Once a user has signed in, more options such as profile page and user image will be available in the navbar.
-* A search icon is nested in the navbar and once clicked it will open the search box.
+* Once a user has signed in, more options such as add post, profile page and user image will be available in the navbar.
+* A search box is nested in the navbar.
 * The navbar is fully responsive, collapsing into a hamburger menu when the screen size becomes smaller.
 
-![Navbar](./assets/readme/features/tasty_blog_navbar_dropdown_menu.jpg)
-* In the navbar users can access the categories list by clicking on the dropdown menu.
+### Herosection
+
+![Herosection](static/extras/features/herosection.png)
+
+![Herosection](static/extras/features/category-dropdown.png)
+* In the herosection users can access the categories list by clicking on the dropdown menu. Also the dropdown images will display informations about each category
 
 ### Footer
 
-![Footer](./assets/readme/features/tasty_blog_footer.jpg)
-* On the website footer, users can see basic information about the blog such as contact, social media, 
-  copyright, and a quote about food recipes.
+![Footer](static/extras/features/footer.png)
+* On the website footer, users can see basic information about the blog such as social media, 
+  copyright, and a quote about baby diversification.
 
 ## Messages and Interaction With Users
 
@@ -280,56 +287,42 @@ user's experience.
 
 ### Sign up
 
-![Sign up](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_signup.jpg)
+![Sign up](static/extras/features/signup-message.png)
 
 * When users sign up to the website they will see a message at the top of the page saying "Successfully signed in as
 (username)".<br>
 
 ### Login
 
-![Login](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_login.jpg)
+![Login](static/extras/features/signin-message.png)
 
 * When users sign in to the website they will see a message at the top of the page saying "Successfully signed in as
 (username)".<br>
 
 ### Logout
 
-![Logout](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_logout.jpg)
+![Logout](static/extras/features/signout-message.png)
 
 * When users log out of the website they will see a message at the top of the page saying "You have signed out".<br>
   
 ### Profile Update
 
-![Profile Update](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_profile_update.jpg)
+![Profile Update](static/extras/features/profile-update-message.png)
 
 * When users update their profile they will see a message at the top of the page saying that their account has been updated.<br>
 
 ### Like Post
 
-![Like Post](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_like_post.jpg)
+![Like Post](static/extras/features/like-message.png)
 * *When users are logged in to the website they can like a post and they will see a message at the top of the page 
   saying "You have liked this post".<br>
 
 ### Unlike Post
 
-![Unlike Post](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_unlike_post.jpg)
+![Unlike Post](static/extras/features/unlike-message.png)
 
 * When users are logged in to the website they can unlike a post that has been liked by the user and they will see a message 
   at the top of the page saying "You have unliked this post".<br>
-
-### Comment Post
-
-![Comment Post](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_comment_sent_1.jpg)
-
-* When users are logged in to the website they can comment on a post and after they submit the comment they will see a 
-  message at the top of the page saying "Your comment was sent successfully and is awaiting approval".<br>
-
-### Comment Post - 2
-
-![Comment Post - 2](./assets/readme/features/interactive_messages/tasty_blog_user_interaction_comment_sent_2.jpg)
-
-* After a user submits a comment, they will see a message over the input comment saying "Thanks (username). Your 
-  comment is awaiting approval! <br>
 
 ### Delete/Edit Comment
 
