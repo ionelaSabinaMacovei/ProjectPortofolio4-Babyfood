@@ -73,7 +73,7 @@ README Table Content
   - [Credits](#credits)
     - [Content](#content)
     - [Information Sources / Resources](#information-sources--resources)
-  - [Special Thanks](#special-thanks)
+  
 
   ## User Experience - UX
 
@@ -511,13 +511,24 @@ to copy the URL
 
 ### Content
 
-* All food recipes were taken from [BBC Goodfood](https://www.bbcgoodfood.com/recipes)
-* The cookbook’s information and images were sourced from [Eason’s](https://www.easons.com/)
-* The images were taken from [Unsplash](https://unsplash.com/)
+* All food recipes and the images were taken from (https://www.cookingformybaby.com/en/)<br>
+(https://www.ellaskitchen.co.uk/)<br>
+(https://babyfoode.com/https://babyfoode.com/recipes/recipes/
+)<br>
+(https://www.healthylittlefoodies.com/category/recipes/
+)<br>
+
 * The Tasty Blog logos and favicon are my own design and build
 
 ### Information Sources / Resources
 
 * [W3Schools - Python](https://www.w3schools.com/python/)
 * [Stack Overflow](https://stackoverflow.com/)
-* [Scrimba - Pyhton](https://scrimba.com/learn/python)
+* [Projects](https://github.com/KSheridan86/project-4-TasteOfIndia/tree/main/templates)
+* [Projects](https://github.com/PedroCristo/portfolio_project_4)
+* [Projects](https://github.com/paulie-o74/newsbox86)
+* [Projects](https://github.com/somvirs57/school_learning_management)
+* [Projects](https://github.com/Code-Institute-Solutions/Django3blog)
+* [YouTube Tutorials](https://www.youtube.com/watch?v=ScABStHY8cc)
+* [YouTube Tutorials](https://www.youtube.com/watch?v=KrGQ2Nrz4Dc)
+
