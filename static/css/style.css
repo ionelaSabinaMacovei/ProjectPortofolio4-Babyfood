@@ -184,7 +184,7 @@ ul {
     width: 25%;
     margin-left: 40%;
     border-radius: 2px;
-    border-block-style: rounded;
+    
 }
 
 
@@ -914,7 +914,7 @@ footer p {
     width: 100%;
 
     border-radius: 2px;
-    border-block-style: rounded;
+    
 }
 
 
@@ -1111,7 +1111,7 @@ footer p {
     }
 
 
-.image-flash {
-    bottom: 86.5%;
-}
+    .image-flash {
+        bottom: 86.5%;
+    }
 }
