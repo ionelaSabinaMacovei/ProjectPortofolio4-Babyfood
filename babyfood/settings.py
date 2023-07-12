@@ -33,7 +33,7 @@ DEBUG = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = ['project-portofolio4-babyfood.herokuapp.com', 'localhost',
-                 '8000-ionelasabin-projectport-y54vzksfurp.ws-eu101.gitpod.io']
+                 '8000-ionelasabin-projectport-66vgivmedrq.ws-eu101.gitpod.io']
 
 
 # Application definition
