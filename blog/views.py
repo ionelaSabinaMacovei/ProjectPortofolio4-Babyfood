@@ -265,9 +265,7 @@ def post_search(request):
         form = PostSearchForm(request.GET)
         if form.is_valid():
             q = form.cleaned_data['q']
-            results = Post.objects.filter
-            (Q(title__icontains=q)
-                | Q(method__icontains=q)).filter(status=1)
+            results = Post.objects.filter(Q(title__icontains=q) | Q(method__icontains=q)).filter(status=1)
 
     return render(request, 'search.html', {
         'form': form,
