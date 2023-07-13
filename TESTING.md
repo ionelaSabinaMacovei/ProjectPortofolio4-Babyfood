@@ -72,31 +72,31 @@ As a Site owner<br>I want to be able to review all posts, categories, users, lik
 1. 
 - Expected - Displays users posts on Profile page.
 - Testing - Login and go on to the Profile Page.
-- Result - Posts dosent appear on the Profile Page.
+- Actual Result - Posts dosent appear on the Profile Page.
 - Fix - Add the query set to the template context in the profile_view.
 
 2. 
 - Expected - Displays comments.
 - Testing - Login user try to add a comment .
-- Result -  404 Error(Page not found).
+- Actual Result -  404 Error(Page not found).
 - Fix - Add the comments to the context variable before returning it.
 
 3. 
 - Expected - Displays the modal for delete comments.
 - Testing - Login user click on the delete button .
-- Result -  Show the user the modal from delete posts.
+- Actual Result -  Show the user the modal from delete posts.
 - Fix - Set unique ids  to 'unhide' the correct modal.
 
 4. 
 - Expected - Displays the modal for delete comments.
 - Testing - Login user click on the delete button .
-- Result -  Show the user the modal from delete posts.
+- Actual Result -  Show the user the modal from delete posts.
 - Fix - Set unique ids  to 'unhide' the correct modal.
 
 5. 
 - Expected - Displays the web page.
 - Testing - Run the server .
-- Result 
+- Actual Result 
 ![Mode Error](static/extras/test/modelserror1.png)
 
 - Fix - Reset the database in Gitpod and in Elephantsql.
@@ -104,17 +104,17 @@ As a Site owner<br>I want to be able to review all posts, categories, users, lik
 6. 
 - Expected - Display the searched post.
 - Testing - Type a random word in the serarch field .
-- Result -  Searching only the title.
+- Actual Result -  Searching only the title.
 - Fix - Use Q __icontains and the pipe to signify or and added name and content.
 
 7. 
 - Expected - Display Google Fonts used.
 - Testing - Run the server.
-- Result -  Do not display the google fonts.
+- Actual Result -  Do not display the google fonts.
 - Fix - Changed the font-family on the body element to 'Chewy' and then, cleared the cache.
 
 8. 
 - Expected - Display collapsable buttons.
 - Testing - Clik on the collapsable button.
-- Result -  Not working(do not appear the text).
+- Actual Result -  Not working(do not appear the text).
 - Fix - Moved the bootstrap javascript file just above the closing </body> tag in the base.html and used <button> instead of an <a> tag

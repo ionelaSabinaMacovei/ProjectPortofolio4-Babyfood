@@ -19,7 +19,6 @@ README Table Content
       - [Main Site Goals](#main-site-goals)
   - [Database Diagram](#database-diagram)
   - [Design](#design)
-      - [Colours](#colours)
       - [Typography](#typography)
     - [Wireframes](#wireframes)
   - [Features](#features)
@@ -60,7 +59,6 @@ README Table Content
     - [Edit Post](#edit-post)
     - [Delete Post 1](#delete-post-1)
     - [Delete Post 2](#delete-post-2)
-  - [Admin Panel/Superuser](#admin-panelsuperuser)
   - [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
       - [Django Packages](#django-packages)
@@ -126,12 +124,6 @@ All functionality and development of this project were managed using GitHub whic
 ![Database Diagrama](static/extras/Database.png)<br>
 
 ## Design
-
-#### Colours
-
-![Colours Palete](static/extras/colors-pallete.png)<br>
-
-* The colour scheme that inspired me to develop this layout for the website.
 
 #### Typography
 
@@ -371,16 +363,6 @@ Bootstrap box model will pop up with the message "Are you sure you want to delet
 
 * After pressing the Delete button again inside the Bootstrap box model they will see a message on the 
   top of the page, "Post deleted!".<br>
-
-## Admin Panel/Superuser
-![No Search Found](static/extras/features/admin-pannel.png)
-
-* On the Admin Panel, as an admin/superuser I have full access to CRUD functionality so I can view, create, edit and
-delete the following ones:
-1. Posts
-2. Comments
-3. Categories
-4. Profiles
 
 ## Technologies Used
 
